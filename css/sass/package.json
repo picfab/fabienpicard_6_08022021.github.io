@@ -1,0 +1,14 @@
+{
+  "name": "sass",
+  "version": "1.0.0",
+  "description": "STyle de l'application Ohlyfood",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass --watch ./src/main.scss:../style.css"
+  },
+  "author": "Fabien Picard",
+  "license": "ISC",
+  "devDependencies": {
+    "prettier": "2.2.1"
+  }
+}

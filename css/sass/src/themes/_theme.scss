@@ -1,0 +1,74 @@
+@font-face {
+    font-family: "DM Sans";
+    src:   url("./webfonts/DM_Sans/DMSans-Regular.ttf") format("truetype");
+    font-weight: normal;
+}
+
+
+body{
+    font-family: DM Sans;
+    font-style: normal;
+    font-size: 18px;
+    line-height: 23px;
+}
+ul{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+button,select{
+    background: none;
+    border: none;
+}
+
+.prim{
+    color:#fff;
+    background: $first;
+    &--nobg{
+        color:$second;
+        background: none;
+    }
+}
+
+.second{
+    color: #000;
+    background: $second;
+    &--light{
+        color: $third;
+        background:$four;
+    }
+    &--nobg{
+        background: none;
+        color: $first;
+    }
+}
+
+.btn{
+    @extend .prim;
+    padding: 23px 28px;
+    font-weight: 700;
+    font-size: 17px;
+    border-radius: 5px;
+    cursor: pointer;
+    &:hover{
+        @extend .second;
+    }
+    &--tags{
+        padding: 3px 6px;
+        background: #fff;
+        color:$first;
+        border-radius: 50px;
+        border: 1px solid #c4c4c4;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 0em;
+
+        &:hover{
+            color:#fff;
+            background: $first;
+        }
+    }
+}
+

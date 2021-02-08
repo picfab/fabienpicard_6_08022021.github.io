@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Keel</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body class="photographe">
+    <header>
+        <a href="../" class="branding"><img src="img/logo.png" alt="" class="branding__img"></a>
+    </header>
+    <main>
+        <article class="author" id="header_author">
+            <header class="author__header">
+                <div class="author__content">
+                    <h1 class="author__title"></h1>
+                    <button class="author__btn btn select">Contactez-moi</button>
+                    <div class="author__info">
+                        <h3 class="author__localisation"></h3>
+                        <p class="author__slogan"></p>
+                    </div>
+                    <nav class="author__nav">
+                        <ul class="tags">
+                        </ul>
+                    </nav>
+                </div>
+                <div class="author__imgBox"><img src="" alt="" class="author__img"></div>
+            </header>
+            <div class="tri">
+                <!-- https://www.w3.org/TR/wai-aria-practices/examples/listbox/listbox-collapsible.html-->
+
+                <div class="listbox">
+                    <span id="order_label" class="listbox__label">
+                    Trier par
+                    </span>
+                    <div class="listbox__content">
+                    <button role="button"
+                            aria-haspopup="listbox"
+                            aria-labelledby="order_label order_filtre"
+                            aria-activedescendant="order-0"
+                            aria-expanded="false"
+                            id="order_filtre"
+                            class="listbox__btn btn select">
+                        <span class="listbox__btn__text">Popularité</span><i class="fas fa-chevron-up"></i>
+                    </button>
+                    <ul id="order_list"
+                        tabindex="-1"
+                        role="listbox"
+                        aria-labelledby="order_label"
+                        class="listbox__list hidden">
+                        <li id="order-0" role="option" class="listbox__elt selected" aria-selected="true">
+                        Popularité<i class="fas fa-chevron-down"></i>
+                        </li>
+                        <li id="order-1" role="option" class="listbox__elt">
+                        Date
+                        </li>
+                        <li id="order-2" role="option" class="listbox__elt">
+                        Titre
+                        </li>
+                    </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="listPhoto">
+            </div>
+            <div class="infoAuthor">
+                <p class="infoAuthor__like"><span></span> <i class="fas fa-heart"></i></p>
+                <p class="infoAuthor__price"><span></span> € / jour</p>
+            </div>
+        </article>
+    </main>
+
+    <script src="js/dist/photographes.js"></script>
+</body>
+</html>

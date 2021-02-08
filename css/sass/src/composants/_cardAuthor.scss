@@ -1,0 +1,65 @@
+.cardAuthor{
+    width:100%;
+    margin-top: 92px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    &__link {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    &__imgBox{
+        border-radius: 200px;
+        width: 200px;
+        overflow: hidden;
+        height: 200px;
+    }
+    &__img {
+        -o-object-fit: cover;
+           object-fit: cover;
+        width: 100%;
+        height: 100%;
+    }
+    &__name {
+        margin-top: 20px;
+        color:$second;
+        text-align: center;
+        font-size: 36px;
+        line-height: 47px;
+        letter-spacing: 0em;
+    }
+
+    &__content{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    &__localisation{
+        color: $first;
+        font-size: 13px;
+        line-height: 17px;
+        letter-spacing: 0em;
+    }
+
+    &__citation{
+        font-size: 10px;
+        line-height: 13.02px;
+    }
+
+    &__tarif{
+        color:$third;
+        font-size: 9px;
+    }
+
+    @media (min-width:768px){
+        width: calc(100%/2);
+    }
+    @media (min-width:1024px){
+        width: calc(100%/3);
+    }
+}
+

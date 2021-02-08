@@ -1,0 +1,15 @@
+header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &__list{
+        display:flex;
+        flex-wrap: wrap;
+    }
+}
+
+.branding{
+    &__img {
+        max-width: 200px;
+    }
+}
