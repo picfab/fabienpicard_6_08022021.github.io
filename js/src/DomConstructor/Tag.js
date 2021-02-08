@@ -3,12 +3,15 @@
  * @param {string} tag le nom du tag
  */
 
-export default function Tag(tag){
+export default function Tag(tag, type, href = null) {
     const tagElt = document.createElement('li')
     tagElt.classList.add('tags__elt')
-    const tagBtn = document.createElement('button')
+    const tagBtn = document.createElement(type)
+    if (type === 'a') {
+        tagBtn.href = href
+    }
     tagBtn.classList.add('tags__btn', 'btn', 'btn--tags')
-    tagBtn.textContent = tag
+    tagBtn.textContent = `#${tag}`
     tagElt.append(tagBtn)
     return tagElt
 }

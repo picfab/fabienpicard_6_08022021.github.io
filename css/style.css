@@ -4656,6 +4656,9 @@ readers do not read off random characters that represent icons */
   font-family: "DM Sans";
   src: url("./webfonts/DM_Sans/DMSans-Regular.ttf") format("truetype");
   font-weight: normal; }
+html {
+  scroll-behavior: smooth; }
+
 body {
   font-family: DM Sans;
   font-style: normal;
@@ -4672,14 +4675,14 @@ button, select {
   background: none;
   border: none; }
 
-.prim, .btn {
+.prim, .btn, .btn--tags--second:hover {
   color: #fff;
   background: #901C1C; }
   .prim--nobg {
     color: #D3573C;
     background: none; }
 
-.second, .btn:hover {
+.second, .btn:hover, .btn--tags--second {
   color: #000;
   background: #D3573C; }
   .second--light {
@@ -4708,6 +4711,9 @@ button, select {
     .btn--tags:hover {
       color: #fff;
       background: #901C1C; }
+
+.hidden {
+  display: none; }
 
 .home .pagename {
   font-weight: 400;
@@ -4999,5 +5005,13 @@ header {
 
 .hidden {
   display: none; }
+
+.comeBack {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center; }
 
 /*# sourceMappingURL=style.css.map */

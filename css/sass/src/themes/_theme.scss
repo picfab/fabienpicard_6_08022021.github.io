@@ -4,7 +4,9 @@
     font-weight: normal;
 }
 
-
+html{
+    scroll-behavior: smooth;
+}
 body{
     font-family: DM Sans;
     font-style: normal;
@@ -54,6 +56,7 @@ button,select{
     &:hover{
         @extend .second;
     }
+
     &--tags{
         padding: 3px 6px;
         background: #fff;
@@ -69,6 +72,16 @@ button,select{
             color:#fff;
             background: $first;
         }
+
+        &--second{
+            @extend .second;
+            &:hover{
+                @extend .prim;
+            }
+        }
     }
 }
 
+.hidden{
+    display: none;
+}
