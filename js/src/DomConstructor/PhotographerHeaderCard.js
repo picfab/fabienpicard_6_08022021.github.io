@@ -24,7 +24,7 @@ export default function PhotographerHeaderCard(data) {
     price.textContent = data.price
     // ajouter les tags
     data.tags.forEach((tag) => {
-        const tagElt = Tag(tag, 'a', `./../?filter=${tag}`)
+        const tagElt = Tag(tag, 'a', `./?filter=${tag}`)
         tags.append(tagElt)
     })
 }
