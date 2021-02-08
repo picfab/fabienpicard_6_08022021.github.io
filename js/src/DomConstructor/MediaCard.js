@@ -16,6 +16,7 @@ export default function MediaCard(data,type){
 
   const img = document.createElement('img')
   img.classList.add('listPhoto__img')
+  img.alt=data.alt
   img.src=`img/${data.photographerId}/${data.image}`
 
   const content = document.createElement('div')

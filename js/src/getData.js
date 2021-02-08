@@ -6,7 +6,7 @@ const requestOptions = {
   redirect: 'follow'
 };
 const getData = new Promise((resolve) => {
-  fetch("js/site.json", requestOptions)
+  fetch("js/site-with-alt.json", requestOptions)
   .then(response => response.json())
   .then(result => {
     resolve(result);
