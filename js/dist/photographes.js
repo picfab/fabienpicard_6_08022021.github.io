@@ -1,1 +1,281 @@
-!function(t){var e={};function n(o){if(e[o])return e[o].exports;var a=e[o]={i:o,l:!1,exports:{}};return t[o].call(a.exports,a,a.exports,n),a.l=!0,a.exports}n.m=t,n.c=e,n.d=function(t,e,o){n.o(t,e)||Object.defineProperty(t,e,{enumerable:!0,get:o})},n.r=function(t){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(t,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(t,"__esModule",{value:!0})},n.t=function(t,e){if(1&e&&(t=n(t)),8&e)return t;if(4&e&&"object"==typeof t&&t&&t.__esModule)return t;var o=Object.create(null);if(n.r(o),Object.defineProperty(o,"default",{enumerable:!0,value:t}),2&e&&"string"!=typeof t)for(var a in t)n.d(o,a,function(e){return t[e]}.bind(null,a));return o},n.n=function(t){var e=t&&t.__esModule?function(){return t.default}:function(){return t};return n.d(e,"a",e),e},n.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},n.p="",n(n.s=3)}([function(t,e,n){"use strict";n.d(e,"b",(function(){return a})),n.d(e,"a",(function(){return c}));const o=document.querySelector(".comeBack .btn");function a(t){t?o.classList.remove("hidden"):o.classList.add("hidden")}function c(t){o.onclick=()=>{o.classList.remove("hidden"),t()}}},function(t,e,n){"use strict";const o={method:"GET",redirect:"follow"},a=new Promise(t=>{fetch("js/site-with-alt.json",o).then(t=>t.json()).then(e=>{t(e)})});e.a=a},function(t,e,n){"use strict";function o(t,e,n=null){const o=document.createElement("li");o.classList.add("tags__elt");const a=document.createElement(e);return"a"===e&&(a.href=n),a.classList.add("tags__btn","btn","btn--tags"),a.textContent="#"+t,o.append(a),o}function a(t){const e=document.createElement("article");e.classList.add("cardAuthor");const n=document.createElement("a");n.classList.add("cardAuthor__link"),n.href="./photographe.html?author="+t.id,e.append(n);const a=document.createElement("div");a.classList.add("cardAuthor__imgBox"),n.append(a);const c=document.createElement("img");c.classList.add("cardAuthor__img"),c.alt="Portrait du photographe "+t.name,c.src="./img/authors/"+t.portrait,a.append(c);const r=document.createElement("h2");r.classList.add("cardAuthor__name"),r.textContent=t.name,n.append(r);const s=document.createElement("div");s.classList.add("cardAuthor__content"),e.append(s);const i=document.createElement("p");i.classList.add("cardAuthor__localisation"),i.textContent=`${t.city}, ${t.country}`,s.append(i);const d=document.createElement("p");d.classList.add("cardAuthor__citation"),d.textContent=t.tagline,s.append(d);const l=document.createElement("p");l.classList.add("cardAuthor__tarif"),l.textContent=t.price+"/jour",s.append(l);const u=document.createElement("div");u.classList.add("cardAuthor__tags"),e.append(u);const m=document.createElement("ul");return m.classList.add("tags"),u.append(m),t.tags.forEach(t=>{const e=o(t,"button");m.append(e)}),e}function c(t){const e=document.querySelector("title"),n="header_author",a=document.querySelector(`#${n} .author__title`),c=document.querySelector(`#${n} .author__localisation`),r=document.querySelector(`#${n} .author__slogan`),s=document.querySelector(`#${n} .tags`),i=document.querySelector(`#${n} .author__img`),d=document.querySelector(".infoAuthor__price span");e.textContent=e.textContent+t.name,a.textContent=t.name,c.textContent=`${t.city}, ${t.country}`,r.textContent=t.tagline,i.src="./img/authors/"+t.portrait,i.alt="Portrait du photographe "+t.name,d.textContent=t.price,t.tags.forEach(t=>{const e=o(t,"a","./?filter="+t);s.append(e)})}n.d(e,"a",(function(){return s}));var r=n(0);function s(){this.CreateElement=function(t,e,n){const o=t;return"card"===e?o.cardPhotographer=new a(t):o.cardHeaderPhotographer=new c(t),o.showCard=function(){const t=document.getElementById("listPhotographers"),e=this.cardPhotographer.querySelectorAll(".tags__btn");Array.from(e).forEach(t=>{t.onclick=()=>{const e=t.textContent.replace(/#/,"").toLowerCase();Object(r.b)(!0),n(e)}}),t.append(this.cardPhotographer)},o}}},function(t,e,n){"use strict";n.r(e);const o=window.location.search,a=new URLSearchParams(o);var c=parseInt(a.get("author"),10),r=n(1),s=n(2);function i(t,e){const n=document.createElement("div");n.classList.add("listPhoto__card"),n.tabIndex=0;const o=document.createElement("div");o.classList.add("listPhoto__container");const a=document.createElement("div");a.classList.add("listPhoto__imgBox");const c=document.createElement("img");c.classList.add("listPhoto__img"),c.alt=t.alt,c.src=`img/${t.photographerId}/${t.image}`;const r=document.createElement("div");r.classList.add("listPhoto__content");const s=document.createElement("h2");s.classList.add("listPhoto__title");const i=t.image.replace(/_/g," ").replace(/.jpg/g,"");s.textContent=i;const d=document.createElement("div");d.classList.add("listPhoto__info");const l=document.createElement("p");l.classList.add("listPhoto__price"),l.textContent=t.price+" € ";const u=document.createElement("div");u.tabIndex=0,u.roles="button",u.ariaLabel="AJouter un like",u.classList.add("listPhoto__like"),u.innerHTML=`<span>${t.likes}</span>`;const m=document.createElement("i");return m.classList.add("fas","fa-heart"),u.ariaLabel="Likes",n.append(o),o.append(a),o.append(r),a.append(c),r.append(s),r.append(d),d.append(l),d.append(u),u.append(m),n}function d(t){const e=document.querySelector(".infoAuthor__like span");let n=0;t.forEach(t=>{n+=t.likes}),e.textContent=n}function l(t,e,n,o,a){const c=t[n].id,r=t[n].textContent;e.querySelector(".listbox__btn__text").textContent=r,e.setAttribute("aria-activedescendant",c),t[o].classList.remove("selected"),t[n].classList.add("selected"),t[o].removeAttribute("aria-selected"),t[n].setAttribute("aria-selected",!0),console.log(r.toLowerCase().trim()),a(r.toLowerCase().trim())}function u(t,e){t.setAttribute("aria-expanded",e)}function m(t){t.sort((function(t,e){return e.likes-t.likes}))}const h=document.querySelector(".listPhoto"),p=[],f=new s.a,_=new function(){this.CreateElement=function(t,e){const n=t;return t.video?n.html=new i(t,"video"):t.image&&(n.html=new i(t,"image")),n.updateLikes=function(){const t=this.html.querySelector(".listPhoto__like span");this.likes=this.likes+1,t.textContent=this.likes,e()},n.showElement=function(){const t=document.querySelector(".listPhoto");if(this.html){const e=this.html.querySelector(".listPhoto__like");e.onclick=t=>{this.updateLikes()},e.onkeydown=t=>{[32,13].includes(t.keyCode)&&this.updateLikes()},t.append(this.html)}},n}};r.a.then(t=>{const e=t.photographers.find(t=>t.id===c);f.CreateElement(e,"header");t.media.filter(t=>t.photographerId===c).forEach(t=>{if(t.image){const e=_.CreateElement(t,()=>d(p));p.push(e)}m(p),p.forEach(t=>{t.showElement()})}),d(p)}),function(t){const e=document.getElementsByClassName("listbox");Array.from(e).forEach(e=>{const n=e.querySelector(".listbox__btn"),o=e.querySelector(".listbox__content"),a=e.querySelector(".listbox__list"),c=e.getElementsByClassName("listbox__elt");n.onmouseover=function(t){u(n,!0),a.classList.remove("hidden")},o.onmouseout=function(t){o.contains(t.relatedTarget)||(u(n,!1),a.classList.add("hidden"))},n.onfocus=t=>{u(n,!0)},n.onfocusout=t=>{u(n,!1)},e.onkeydown=e=>{const o=Array.from(c).findIndex(t=>t.classList.contains("selected"));if([32,13].includes(e.keyCode)){if(a.classList.contains("hidden")?(a.classList.remove("hidden"),a.focus()):(a.classList.add("hidden"),n.focus()),38===e.keyCode){const e=0===o?c.length-1:o-1;l(c,n,e,o,t)}if(40===e.keyCode){const e=o===c.length-1?0:o+1;l(c,n,e,o,t)}}},e.onclick=e=>{const o=Array.from(c).findIndex(t=>t.classList.contains("selected")),r=Array.from(c).findIndex(t=>t===e.target);l(c,n,r,o,t),a.classList.add("hidden")}})}((function(t){switch(t){case"popularité":m(p);break;case"titre":!function(t){t.sort((function(t,e){return[t,e].forEach(t=>{t.image?t.text=t.image.replace(/_/g," "):t.video&&(t.text=t.video.replace(/_/g," "))}),t.text.localeCompare(e.text)}))}(p);break;case"date":!function(t){t.sort((function(t,e){return Date.parse(t.date)-Date.parse(e.date)}))}(p);break;default:m(p)}h.innerHTML="",p.forEach(t=>{t.showElement()})}))}]);
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/photographes.js");
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ "./src/DomConstructor/Form.js":
+/*!************************************!*\
+  !*** ./src/DomConstructor/Form.js ***!
+  \************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return Form; });\nconst eltsForm = [{\n  label: 'Prénom',\n  name: 'prenom',\n  type: 'text'\n}, {\n  label: 'Nom',\n  name: 'nom',\n  type: 'text'\n}, {\n  label: 'Email',\n  name: 'email',\n  type: 'email'\n}, {\n  label: 'Votre message',\n  name: 'message',\n  type: 'textarea'\n}];\n\nfunction createInput(params) {\n  const formElt = document.createElement('div');\n  formElt.classList.add('form__elt');\n  const labelElt = document.createElement('label');\n  labelElt.classList.add('form__label');\n  labelElt.textContent = params.label;\n  labelElt.for = params.name;\n  let input;\n\n  if (params.type === 'textarea') {\n    input = document.createElement('textarea');\n    input.classList.add('form__textarea');\n  } else {\n    input = document.createElement('input');\n    input.type = params.type;\n  }\n\n  input.name = params.name;\n  input.classList.add('form__input');\n  formElt.append(labelElt);\n  formElt.append(input);\n  return formElt;\n}\n\nfunction Form(name) {\n  const form = document.createElement('div');\n  form.classList.add('form');\n  form.id = 'contact';\n  const content = document.createElement('div');\n  content.classList.add('form__content');\n  const close = document.createElement('div');\n  close.classList.add('form__close', 'fas', 'fa-times');\n  const title = document.createElement('div');\n  title.classList.add('form__title');\n  title.innerHTML = `Contactez-moi <br> ${name}`;\n  content.append(title);\n  content.append(close);\n  eltsForm.forEach(elt => {\n    const eltDom = createInput(elt);\n    content.append(eltDom);\n  });\n  const btn = document.createElement('button');\n  btn.type = 'submit';\n  btn.textContent = 'Envoyer';\n  btn.classList.add('form__submit', 'btn');\n  content.append(btn);\n  form.append(content);\n  return form;\n}\n\n//# sourceURL=webpack:///./src/DomConstructor/Form.js?");
+
+/***/ }),
+
+/***/ "./src/DomConstructor/Lightbox.js":
+/*!****************************************!*\
+  !*** ./src/DomConstructor/Lightbox.js ***!
+  \****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return Lightbox; });\n/**\n *\n * @param {object} data les données du média\n * @param {string} type le type de media 'image' ou 'video'\n */\nfunction Lightbox(medias, index) {\n  // Tableau des slides\n  const listSLide = []; // creation des elements de la lightbox\n\n  const body = document.querySelector('body');\n  const lightbox = document.createElement('div');\n  lightbox.classList.add('lightbox');\n  const container = document.createElement('div');\n  container.classList.add('lightbox__container');\n  const navLeft = document.createElement('div');\n  navLeft.classList.add('lightbox__blockNav');\n  const navRight = document.createElement('div');\n  navRight.classList.add('lightbox__blockNav');\n  const left = document.createElement('span');\n  left.classList.add('lightbox__left', 'fas', 'fa-chevron-left');\n  const right = document.createElement('span');\n  right.classList.add('lightbox__right', 'fas', 'fa-chevron-right');\n  const close = document.createElement('span');\n  close.classList.add('lightbox__close', 'fas', 'fa-times');\n  const arrow = document.createElement('div');\n  arrow.classList.add('lightbox__arrow'); // creation de tous les slides de la lightbox\n\n  medias.forEach((media, i) => {\n    const content = document.createElement('div');\n    content.classList.add('lightbox__content');\n\n    if (i === index) {\n      content.classList.add('show');\n    }\n\n    const imgbox = document.createElement('div');\n    imgbox.classList.add('lightbox__imgbox');\n    const img = document.createElement('img');\n    img.classList.add('lightbox__img');\n    img.src = media.url;\n    img.alt = media.alt;\n    const title = document.createElement('div');\n    title.classList.add('lightbox__title');\n    title.textContent = media.title;\n    content.append(imgbox);\n    content.append(title);\n    imgbox.append(img);\n    container.append(content);\n    listSLide.push(content);\n  }); // creation de tout les éléments\n\n  lightbox.append(container);\n  navLeft.append(left);\n  navRight.append(close);\n  navRight.append(right);\n  container.prepend(navLeft);\n  container.append(navRight); // ferme la lightbox\n\n  close.onclick = () => {\n    lightbox.remove();\n  }; // image precedante\n\n\n  left.onclick = () => {\n    listSLide[index].classList.remove('show');\n    index = index - 1 < 0 ? medias.length - 1 : index - 1;\n    listSLide[index].classList.add('show');\n  }; // image suivante\n\n\n  right.onclick = () => {\n    listSLide[index].classList.remove('show');\n    index = index + 1 === medias.length ? 0 : index + 1;\n    listSLide[index].classList.add('show');\n  };\n\n  body.append(lightbox);\n}\n\n//# sourceURL=webpack:///./src/DomConstructor/Lightbox.js?");
+
+/***/ }),
+
+/***/ "./src/DomConstructor/MediaCard.js":
+/*!*****************************************!*\
+  !*** ./src/DomConstructor/MediaCard.js ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return MediaCard; });\n/**\n *\n * @param {object} data les données du média\n * @param {string} type le type de media 'image' ou 'video'\n */\nfunction MediaCard(data, type) {\n  const card = document.createElement('div');\n  card.classList.add('listPhoto__card');\n  card.tabIndex = 0;\n  const container = document.createElement('div');\n  container.classList.add('listPhoto__container');\n  const imgBox = document.createElement('div');\n  imgBox.classList.add('listPhoto__imgBox');\n  const img = document.createElement('img');\n  img.classList.add('listPhoto__img');\n  img.alt = data.alt;\n  img.src = data.url;\n  const content = document.createElement('div');\n  content.classList.add('listPhoto__content');\n  const title = document.createElement('h2');\n  title.classList.add('listPhoto__title');\n  title.textContent = data.title;\n  const info = document.createElement('div');\n  info.classList.add('listPhoto__info');\n  const price = document.createElement('span');\n  price.classList.add('listPhoto__price');\n  price.textContent = `${data.price} € `;\n  const likes = document.createElement('div');\n  likes.tabIndex = 0;\n  likes.roles = 'button';\n  likes.ariaLabel = 'AJouter un like';\n  likes.classList.add('listPhoto__like');\n  likes.innerHTML = `<span>${data.likes}</span>`;\n  const likeBtn = document.createElement('i');\n  likeBtn.classList.add('fas', 'fa-heart');\n  likes.ariaLabel = 'Likes';\n  card.append(container);\n  container.append(imgBox);\n  container.append(content);\n  imgBox.append(img);\n  content.append(title);\n  content.append(info);\n  info.append(price);\n  info.append(likes);\n  likes.append(likeBtn);\n  return card;\n}\n\n//# sourceURL=webpack:///./src/DomConstructor/MediaCard.js?");
+
+/***/ }),
+
+/***/ "./src/DomConstructor/PhotographerCard.js":
+/*!************************************************!*\
+  !*** ./src/DomConstructor/PhotographerCard.js ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return PhotographerCard; });\n/* harmony import */ var _Tag__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Tag */ \"./src/DomConstructor/Tag.js\");\n\n/**\n *\n * @param {object} data les données du photgraphe\n */\n\nfunction PhotographerCard(data) {\n  // creation de la carte\n  const card = document.createElement('article');\n  card.classList.add('cardAuthor'); // creation du lien\n\n  const link = document.createElement('a');\n  link.classList.add('cardAuthor__link');\n  link.href = `./photographe.html?author=${data.id}`;\n  card.append(link); // creation de la box d'image est titre\n\n  const imgBox = document.createElement('div');\n  imgBox.classList.add('cardAuthor__imgBox');\n  link.append(imgBox); // creation de l'image\n\n  const img = document.createElement('img');\n  img.classList.add('cardAuthor__img');\n  img.alt = `Portrait du photographe ${data.name}`;\n  img.src = `./img/authors/${data.portrait}`;\n  imgBox.append(img); // creation du nom de l'auteur\n\n  const title = document.createElement('h2');\n  title.classList.add('cardAuthor__name');\n  title.textContent = data.name;\n  link.append(title); // creation de la box d'information de l'auteur\n\n  const info = document.createElement('div');\n  info.classList.add('cardAuthor__content');\n  card.append(info); // Ajout de la localisation de l'auteur\n\n  const local = document.createElement('p');\n  local.classList.add('cardAuthor__localisation');\n  local.textContent = `${data.city}, ${data.country}`;\n  info.append(local); // ajout de la tagline\n\n  const tagline = document.createElement('p');\n  tagline.classList.add('cardAuthor__citation');\n  tagline.textContent = data.tagline;\n  info.append(tagline); // Ajout de la du tarif\n\n  const tarif = document.createElement('p');\n  tarif.classList.add('cardAuthor__tarif');\n  tarif.textContent = `${data.price}/jour`;\n  info.append(tarif); // creation de la box tags\n\n  const tagsBox = document.createElement('div');\n  tagsBox.classList.add('cardAuthor__tags');\n  card.append(tagsBox); // ouverture de la liste des tags\n\n  const tags = document.createElement('ul');\n  tags.classList.add('tags');\n  tagsBox.append(tags); // Creation des tags un par un\n\n  data.tags.forEach(tag => {\n    const tagElt = Object(_Tag__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(tag, 'button');\n    tags.append(tagElt);\n  });\n  return card;\n}\n\n//# sourceURL=webpack:///./src/DomConstructor/PhotographerCard.js?");
+
+/***/ }),
+
+/***/ "./src/DomConstructor/PhotographerHeaderCard.js":
+/*!******************************************************!*\
+  !*** ./src/DomConstructor/PhotographerHeaderCard.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return PhotographerHeaderCard; });\n/* harmony import */ var _Tag__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Tag */ \"./src/DomConstructor/Tag.js\");\n\n/**\n *\n * @param {object} data les données du photographe\n */\n\nfunction PhotographerHeaderCard(data) {\n  // récupération des l'emplacements\n  const siteTitle = document.querySelector('title');\n  const headerId = 'header_author';\n  const title = document.querySelector(`#${headerId} .author__title`);\n  const local = document.querySelector(`#${headerId} .author__localisation`);\n  const tagline = document.querySelector(`#${headerId} .author__slogan`);\n  const tags = document.querySelector(`#${headerId} .tags`);\n  const img = document.querySelector(`#${headerId} .author__img`);\n  const price = document.querySelector('.infoAuthor__price span'); // modifier le contenu\n\n  siteTitle.textContent = siteTitle.textContent + data.name;\n  title.textContent = data.name;\n  local.textContent = `${data.city}, ${data.country}`;\n  tagline.textContent = data.tagline;\n  img.src = `./img/authors/${data.portrait}`;\n  img.alt = `Portrait du photographe ${data.name}`;\n  price.textContent = data.price; // ajouter les tags\n\n  data.tags.forEach(tag => {\n    const tagElt = Object(_Tag__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(tag, 'a', `./?filter=${tag}`);\n    tags.append(tagElt);\n  });\n}\n\n//# sourceURL=webpack:///./src/DomConstructor/PhotographerHeaderCard.js?");
+
+/***/ }),
+
+/***/ "./src/DomConstructor/Tag.js":
+/*!***********************************!*\
+  !*** ./src/DomConstructor/Tag.js ***!
+  \***********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return Tag; });\n/**\n * Constructeur html d'un bouton Tag\n * @param {string} tag le nom du tag\n */\nfunction Tag(tag, type, href = null) {\n  const tagElt = document.createElement('li');\n  tagElt.classList.add('tags__elt');\n  const tagBtn = document.createElement(type);\n\n  if (type === 'a') {\n    tagBtn.href = href;\n  }\n\n  tagBtn.classList.add('tags__btn', 'btn', 'btn--tags');\n  tagBtn.textContent = `#${tag}`;\n  tagElt.append(tagBtn);\n  return tagElt;\n}\n\n//# sourceURL=webpack:///./src/DomConstructor/Tag.js?");
+
+/***/ }),
+
+/***/ "./src/Factory/FactoryForm.js":
+/*!************************************!*\
+  !*** ./src/Factory/FactoryForm.js ***!
+  \************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return FactoryForm; });\n/* harmony import */ var _DomConstructor_Form__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../DomConstructor/Form */ \"./src/DomConstructor/Form.js\");\n\n/**\n * Factory pour creer les objets Media\n */\n\nfunction FactoryForm() {\n  this.CreateElement = function (nameAuthor) {\n    const element = {};\n    /**\n     * création du rendu html\n     */\n\n    element.html = new _DomConstructor_Form__WEBPACK_IMPORTED_MODULE_0__[\"default\"](nameAuthor);\n    /**\n     * Methode pour ouvrir le formulaire\n     */\n\n    element.open = function () {\n      const close = this.html.querySelector('.form__close');\n\n      close.onclick = () => this.close();\n\n      const body = document.querySelector('body');\n      body.append(this.html);\n    };\n    /**\n     * Methode pour fermer le formulaire\n     */\n\n\n    element.close = function () {\n      const form = document.getElementById('contact');\n      form.remove();\n    };\n\n    return element;\n  };\n}\n\n//# sourceURL=webpack:///./src/Factory/FactoryForm.js?");
+
+/***/ }),
+
+/***/ "./src/Factory/FactoryMedia.js":
+/*!*************************************!*\
+  !*** ./src/Factory/FactoryMedia.js ***!
+  \*************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return FactoryMedia; });\n/* harmony import */ var _DomConstructor_MediaCard__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../DomConstructor/MediaCard */ \"./src/DomConstructor/MediaCard.js\");\n\n/**\n * Factory pour creer les objets Media\n */\n\nfunction FactoryMedia() {\n  /**\n   * Le constructeur prend en parametre :\n   * @param {object} media les données du média\n   * @param {function} updateTotalLikes une fonction pour mettre à jour le total de like du photographe\n   */\n  this.CreateElement = function (media, updateTotalLikes) {\n    const element = media;\n\n    if (media.video) {\n      element.html = new _DomConstructor_MediaCard__WEBPACK_IMPORTED_MODULE_0__[\"default\"](media, 'video');\n    } else if (media.image) {\n      element.title = media.image.replace(/_/g, ' ').replace(/.jpg/g, '');\n      element.url = `img/${media.photographerId}/${media.image}`;\n      element.html = new _DomConstructor_MediaCard__WEBPACK_IMPORTED_MODULE_0__[\"default\"](media, 'image');\n    } // Methode pour incrémenter le nombre de like de l'objet\n    // et mets à jour le total de likes du photographe\n\n\n    element.updateLikes = function () {\n      const textLikes = this.html.querySelector('.listPhoto__like span');\n      this.likes = this.likes + 1;\n      textLikes.textContent = this.likes;\n      updateTotalLikes();\n    }; // Methode pour afficher le rendu html de l'object\n    // gérer les evenement sur l'élément like\n\n\n    element.showElement = function () {\n      const container = document.querySelector('.listPhoto');\n\n      if (this.html) {\n        const btn = this.html.querySelector('.listPhoto__like');\n\n        btn.onclick = e => {\n          this.updateLikes();\n        };\n\n        btn.onkeydown = e => {\n          if ([32, 13].includes(e.keyCode)) {\n            this.updateLikes();\n          }\n        };\n\n        container.append(this.html);\n      }\n    };\n\n    return element;\n  };\n}\n\n//# sourceURL=webpack:///./src/Factory/FactoryMedia.js?");
+
+/***/ }),
+
+/***/ "./src/Factory/FactoryPhotographe.js":
+/*!*******************************************!*\
+  !*** ./src/Factory/FactoryPhotographe.js ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return FactoryPhotographe; });\n/* harmony import */ var _DomConstructor_PhotographerCard__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../DomConstructor/PhotographerCard */ \"./src/DomConstructor/PhotographerCard.js\");\n/* harmony import */ var _DomConstructor_PhotographerHeaderCard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../DomConstructor/PhotographerHeaderCard */ \"./src/DomConstructor/PhotographerHeaderCard.js\");\n/* harmony import */ var _utils_btnComeBack__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/btnComeBack */ \"./src/utils/btnComeBack.js\");\n\n\n\n/**\n * Factory de creation des photographe\n */\n\nfunction FactoryPhotographe() {\n  /**\n   * Le constructeur prend en parametres :\n   * @param {object} data les données du photographe\n   * @param {string} type 'card' si c'est une carte de photographe\n   *                       ou 'header' si c'est un header de page de photographe\n   */\n  this.CreateElement = function (data, type, filterTag) {\n    const element = data;\n\n    if (type === 'card') {\n      element.cardPhotographer = new _DomConstructor_PhotographerCard__WEBPACK_IMPORTED_MODULE_0__[\"default\"](data);\n    } else {\n      element.cardHeaderPhotographer = new _DomConstructor_PhotographerHeaderCard__WEBPACK_IMPORTED_MODULE_1__[\"default\"](data);\n    }\n\n    element.showCard = function () {\n      const main = document.getElementById('listPhotographers');\n      const allFilter = this.cardPhotographer.querySelectorAll('.tags__btn');\n      Array.from(allFilter).forEach(filter => {\n        filter.onclick = () => {\n          const value = filter.textContent.replace(/#/, '').toLowerCase();\n          Object(_utils_btnComeBack__WEBPACK_IMPORTED_MODULE_2__[\"showBtnComeBack\"])(true);\n          filterTag(value);\n        };\n      });\n      main.append(this.cardPhotographer);\n    };\n\n    return element;\n  };\n}\n\n//# sourceURL=webpack:///./src/Factory/FactoryPhotographe.js?");
+
+/***/ }),
+
+/***/ "./src/getData.js":
+/*!************************!*\
+  !*** ./src/getData.js ***!
+  \************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/**\n * Récupère les données via l'api\n */\nconst routeAPI = 'js/site-with-alt.json';\nconst requestOptions = {\n  method: 'GET',\n  redirect: 'follow'\n};\nconst getData = new Promise(resolve => {\n  fetch(routeAPI, requestOptions).then(response => response.json()).then(result => {\n    resolve(result);\n  }).catch(error => console.error(error));\n});\n/* harmony default export */ __webpack_exports__[\"default\"] = (getData);\n\n//# sourceURL=webpack:///./src/getData.js?");
+
+/***/ }),
+
+/***/ "./src/paramUrl/paramUrlAuthor.js":
+/*!****************************************!*\
+  !*** ./src/paramUrl/paramUrlAuthor.js ***!
+  \****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/**\n * récupère l'id du photogrape d'une page\n */\nconst queryString = window.location.search;\nconst urlParams = new URLSearchParams(queryString);\nconst author = parseInt(urlParams.get('author'), 10);\n\nif (!author) {\n  window.location.replace('/');\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (author);\n\n//# sourceURL=webpack:///./src/paramUrl/paramUrlAuthor.js?");
+
+/***/ }),
+
+/***/ "./src/photographes.js":
+/*!*****************************!*\
+  !*** ./src/photographes.js ***!
+  \*****************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _paramUrl_paramUrlAuthor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./paramUrl/paramUrlAuthor */ \"./src/paramUrl/paramUrlAuthor.js\");\n/* harmony import */ var _getData__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./getData */ \"./src/getData.js\");\n/* harmony import */ var _Factory_FactoryPhotographe__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Factory/FactoryPhotographe */ \"./src/Factory/FactoryPhotographe.js\");\n/* harmony import */ var _Factory_FactoryMedia__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Factory/FactoryMedia */ \"./src/Factory/FactoryMedia.js\");\n/* harmony import */ var _utils_updateTotalLikes__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./utils/updateTotalLikes */ \"./src/utils/updateTotalLikes.js\");\n/* harmony import */ var _DomConstructor_Lightbox__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./DomConstructor/Lightbox */ \"./src/DomConstructor/Lightbox.js\");\n/* harmony import */ var _utils_listBox__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./utils/listBox */ \"./src/utils/listBox.js\");\n/* harmony import */ var _utils_tri__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./utils/tri */ \"./src/utils/tri.js\");\n/* harmony import */ var _Factory_FactoryForm__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Factory/FactoryForm */ \"./src/Factory/FactoryForm.js\");\n/**\n * initialisation des fonctionnalité de la page d'un photographe\n */\n\n\n\n\n\n\n\n\n\nconst container = document.querySelector('.listPhoto');\nconst medias = [];\nconst factPhotographe = new _Factory_FactoryPhotographe__WEBPACK_IMPORTED_MODULE_2__[\"default\"]();\nconst factMedia = new _Factory_FactoryMedia__WEBPACK_IMPORTED_MODULE_3__[\"default\"]();\nconst factForm = new _Factory_FactoryForm__WEBPACK_IMPORTED_MODULE_8__[\"default\"]();\nlet form;\n/**\n * Afficher la lightbox au click sur les images\n */\n\nfunction showMedia() {\n  medias.forEach((media, i) => {\n    media.showElement();\n\n    media.html.querySelector('img').onclick = () => {\n      Object(_DomConstructor_Lightbox__WEBPACK_IMPORTED_MODULE_5__[\"default\"])(medias, i);\n    };\n  });\n}\n/** On récupère les données et on les traites */\n\n\n_getData__WEBPACK_IMPORTED_MODULE_1__[\"default\"].then(result => {\n  // on retrouve les données du photographe de la page\n  const findPhotographe = result.photographers.find(x => x.id === _paramUrl_paramUrlAuthor__WEBPACK_IMPORTED_MODULE_0__[\"default\"]); // On créait l'objet photographe\n\n  const photographe = factPhotographe.CreateElement(findPhotographe, 'header'); // on récupère les médias du photographe\n\n  const mediaFilter = result.media.filter(x => x.photographerId === _paramUrl_paramUrlAuthor__WEBPACK_IMPORTED_MODULE_0__[\"default\"]); // on créait chaque\n\n  mediaFilter.forEach(elt => {\n    // condition temporaire, il faut traiter les vdo\n    if (elt.image) {\n      const newElement = factMedia.CreateElement(elt, () => Object(_utils_updateTotalLikes__WEBPACK_IMPORTED_MODULE_4__[\"default\"])(medias));\n      medias.push(newElement);\n    }\n\n    Object(_utils_tri__WEBPACK_IMPORTED_MODULE_7__[\"triPopularite\"])(medias);\n    showMedia();\n  }); // on créait l'objet du formulaire\n\n  form = factForm.CreateElement(photographe.name); // Une fois tous les objects média créé on affiche le total des likes\n\n  Object(_utils_updateTotalLikes__WEBPACK_IMPORTED_MODULE_4__[\"default\"])(medias);\n});\n/**\n * Gestion de la listBox\n * @param {string} type nom du type de tri\n */\n\nfunction updateAfterTri(type) {\n  switch (type) {\n    case 'popularité':\n      Object(_utils_tri__WEBPACK_IMPORTED_MODULE_7__[\"triPopularite\"])(medias);\n      break;\n\n    case 'titre':\n      Object(_utils_tri__WEBPACK_IMPORTED_MODULE_7__[\"triTitre\"])(medias);\n      break;\n\n    case 'date':\n      Object(_utils_tri__WEBPACK_IMPORTED_MODULE_7__[\"triDate\"])(medias);\n      break;\n\n    default:\n      Object(_utils_tri__WEBPACK_IMPORTED_MODULE_7__[\"triPopularite\"])(medias);\n      break;\n  }\n\n  container.innerHTML = '';\n  showMedia();\n}\n\nObject(_utils_listBox__WEBPACK_IMPORTED_MODULE_6__[\"default\"])(updateAfterTri);\n/**\n * Afficher le formulaire de contact\n */\n\nconst btnForm = document.querySelector('.author__btn');\n\nbtnForm.onclick = () => {\n  form.open();\n};\n\n//# sourceURL=webpack:///./src/photographes.js?");
+
+/***/ }),
+
+/***/ "./src/utils/btnComeBack.js":
+/*!**********************************!*\
+  !*** ./src/utils/btnComeBack.js ***!
+  \**********************************/
+/*! exports provided: showBtnComeBack, resetData */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"showBtnComeBack\", function() { return showBtnComeBack; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"resetData\", function() { return resetData; });\nconst btnComeBack = document.querySelector('.comeBack .btn');\nfunction showBtnComeBack(show) {\n  if (show) {\n    btnComeBack.classList.remove('hidden');\n  } else {\n    btnComeBack.classList.add('hidden');\n  }\n}\nfunction resetData(resetFunction) {\n  btnComeBack.onclick = () => {\n    btnComeBack.classList.remove('hidden');\n    resetFunction();\n  };\n}\n\n//# sourceURL=webpack:///./src/utils/btnComeBack.js?");
+
+/***/ }),
+
+/***/ "./src/utils/listBox.js":
+/*!******************************!*\
+  !*** ./src/utils/listBox.js ***!
+  \******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return listBox; });\n/**\n * fait fonctionner la listbox\n */\n\n/**\n * mets à jour les valeur et attributs de la listbox\n * @param {array} options un tabelau d'objet avec les valeurs de chaque option\n * @param {objet} listboxBtn élément du dom du bouton de la listbox\n * @param {int} newIndex nouvel index de la valeur sélectionné\n * @param {int} oldIndex index de l'ancienne valuer ssélectionné\n * @param {function} updateAfterTri function pour mettre à jour le composant parent\n */\nfunction updateValue(options, listboxBtn, newIndex, oldIndex, updateAfterTri) {\n  const id = options[newIndex].id;\n  const textContent = options[newIndex].textContent;\n  listboxBtn.querySelector('.listbox__btn__text').textContent = textContent;\n  listboxBtn.setAttribute('aria-activedescendant', id);\n  options[oldIndex].classList.remove('selected');\n  options[newIndex].classList.add('selected');\n  options[oldIndex].removeAttribute('aria-selected');\n  options[newIndex].setAttribute('aria-selected', true);\n  console.log(textContent.toLowerCase().trim());\n  updateAfterTri(textContent.toLowerCase().trim());\n}\n/**\n * mets à jour aria-expended\n * @param {oject} elt element du dom où la valuer de aria-expended est à modifier\n * @param {boolean} value true si la listbox est déplié sinon false\n */\n\n\nfunction ariaExpanded(elt, value) {\n  elt.setAttribute('aria-expanded', value);\n}\n/**\n * initialise le fonctionnement de la listbox\n * @param {function} updateAfterTri function pour mettre à jour le composant parent\n */\n\n\nfunction listBox(updateAfterTri) {\n  const listboxes = document.getElementsByClassName('listbox');\n  Array.from(listboxes).forEach(listbox => {\n    const listboxBtn = listbox.querySelector('.listbox__btn');\n    const listboxContent = listbox.querySelector('.listbox__content');\n    const listboxList = listbox.querySelector('.listbox__list');\n    const options = listbox.getElementsByClassName('listbox__elt');\n    /**\n     * action au survol du bouton\n     * @param {event} e evenement\n     */\n\n    listboxBtn.onmouseover = function (e) {\n      ariaExpanded(listboxBtn, true);\n      listboxList.classList.remove('hidden');\n    };\n    /**\n     * action à la fin du survol\n     * @param {event} e évenement\n     */\n\n\n    listboxContent.onmouseout = function (e) {\n      if (!listboxContent.contains(e.relatedTarget)) {\n        // moused out of div\n        ariaExpanded(listboxBtn, false);\n        listboxList.classList.add('hidden');\n      }\n    };\n    /**\n     * action au focus du bouton\n     * @param {event} e évenement\n     */\n\n\n    listboxBtn.onfocus = e => {\n      ariaExpanded(listboxBtn, true);\n    };\n    /**\n     * action à la fin du focus\n     * @param {event} e evenement\n     */\n\n\n    listboxBtn.onfocusout = e => {\n      ariaExpanded(listboxBtn, false);\n    };\n    /**\n     * action lors de l'utilisation des bouton haut bas\n     * @param {event} e evenement\n     */\n\n\n    listbox.onkeydown = e => {\n      const index = Array.from(options).findIndex(x => x.classList.contains('selected')); // const selected =  listbox.getElementsByClassName('selected')[0]\n\n      if ([32, 13].includes(e.keyCode)) {\n        if (listboxList.classList.contains('hidden')) {\n          listboxList.classList.remove('hidden');\n          listboxList.focus();\n        } else {\n          listboxList.classList.add('hidden');\n          listboxBtn.focus();\n        }\n\n        if (e.keyCode === 38) {\n          // haut\n          const prev = index === 0 ? options.length - 1 : index - 1;\n          updateValue(options, listboxBtn, prev, index, updateAfterTri);\n        }\n\n        if (e.keyCode === 40) {\n          // bas\n          const next = index === options.length - 1 ? 0 : index + 1;\n          updateValue(options, listboxBtn, next, index, updateAfterTri);\n        }\n      }\n    };\n    /**\n     * action lors de l'utilisation de la souris\n     * @param {event} e evenement\n     */\n\n\n    listbox.onclick = e => {\n      const index = Array.from(options).findIndex(x => x.classList.contains('selected'));\n      const newValue = Array.from(options).findIndex(x => x === e.target);\n      updateValue(options, listboxBtn, newValue, index, updateAfterTri);\n      listboxList.classList.add('hidden');\n    };\n  });\n}\n\n//# sourceURL=webpack:///./src/utils/listBox.js?");
+
+/***/ }),
+
+/***/ "./src/utils/tri.js":
+/*!**************************!*\
+  !*** ./src/utils/tri.js ***!
+  \**************************/
+/*! exports provided: triPopularite, triDate, triTitre */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"triPopularite\", function() { return triPopularite; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"triDate\", function() { return triDate; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"triTitre\", function() { return triTitre; });\n/**\n * function de tri\n */\n\n/**\n * Tri par likes\n * @param {array} medias\n */\nfunction triPopularite(medias) {\n  medias.sort(function (a, b) {\n    return b.likes - a.likes;\n  });\n}\n/**\n * Tri par date\n * @param {array} medias\n */\n\nfunction triDate(medias) {\n  medias.sort(function (a, b) {\n    return Date.parse(a.date) - Date.parse(b.date);\n  });\n}\n/**\n * Tri par Titre\n * @param {array} medias\n */\n\nfunction triTitre(medias) {\n  medias.sort(function (a, b) {\n    ;\n    [a, b].forEach(elt => {\n      if (elt.image) {\n        elt.text = elt.image.replace(/_/g, ' ');\n      } else if (elt.video) {\n        elt.text = elt.video.replace(/_/g, ' ');\n      }\n    });\n    return a.text.localeCompare(b.text);\n  });\n}\n\n//# sourceURL=webpack:///./src/utils/tri.js?");
+
+/***/ }),
+
+/***/ "./src/utils/updateTotalLikes.js":
+/*!***************************************!*\
+  !*** ./src/utils/updateTotalLikes.js ***!
+  \***************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return updateTotalLikes; });\n/**\n * Calculer le total des likes et l'afficher\n * @param {object} data un array avec toutes les données des médias\n */\nfunction updateTotalLikes(data) {\n  const likesBox = document.querySelector('.infoAuthor__like span');\n  let likes = 0;\n  data.forEach(elt => {\n    likes = likes + elt.likes;\n  });\n  likesBox.textContent = likes;\n}\n\n//# sourceURL=webpack:///./src/utils/updateTotalLikes.js?");
+
+/***/ })
+
+/******/ });

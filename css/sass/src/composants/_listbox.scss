@@ -1,7 +1,11 @@
 $marginBtn:10px;
 .listbox{
     display: flex;
-
+    align-items: center;
+    margin-bottom: 30px;
+    @media (max-width:1024px) {
+        display: none;
+    }
     &__content{
         text-align: center;
     }
@@ -16,6 +20,10 @@ $marginBtn:10px;
         display: flex;
         justify-content: space-between;
         align-items: center;
+    }
+    &__label{
+        margin-right: 24px;
+        font-weight: 700;
     }
 
     &__list{

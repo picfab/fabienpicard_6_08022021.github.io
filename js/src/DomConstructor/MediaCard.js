@@ -17,20 +17,19 @@ export default function MediaCard(data, type) {
     const img = document.createElement('img')
     img.classList.add('listPhoto__img')
     img.alt = data.alt
-    img.src = `img/${data.photographerId}/${data.image}`
+    img.src = data.url
 
     const content = document.createElement('div')
     content.classList.add('listPhoto__content')
 
     const title = document.createElement('h2')
     title.classList.add('listPhoto__title')
-    const titleValue = data.image.replace(/_/g, ' ').replace(/.jpg/g, '')
-    title.textContent = titleValue
+    title.textContent = data.title
 
     const info = document.createElement('div')
     info.classList.add('listPhoto__info')
 
-    const price = document.createElement('p')
+    const price = document.createElement('span')
     price.classList.add('listPhoto__price')
     price.textContent = `${data.price} € `
 

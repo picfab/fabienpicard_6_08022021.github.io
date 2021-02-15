@@ -1,1 +1,185 @@
-!function(t){var e={};function n(o){if(e[o])return e[o].exports;var r=e[o]={i:o,l:!1,exports:{}};return t[o].call(r.exports,r,r.exports,n),r.l=!0,r.exports}n.m=t,n.c=e,n.d=function(t,e,o){n.o(t,e)||Object.defineProperty(t,e,{enumerable:!0,get:o})},n.r=function(t){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(t,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(t,"__esModule",{value:!0})},n.t=function(t,e){if(1&e&&(t=n(t)),8&e)return t;if(4&e&&"object"==typeof t&&t&&t.__esModule)return t;var o=Object.create(null);if(n.r(o),Object.defineProperty(o,"default",{enumerable:!0,value:t}),2&e&&"string"!=typeof t)for(var r in t)n.d(o,r,function(e){return t[e]}.bind(null,r));return o},n.n=function(t){var e=t&&t.__esModule?function(){return t.default}:function(){return t};return n.d(e,"a",e),e},n.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},n.p="",n(n.s=4)}([function(t,e,n){"use strict";n.d(e,"b",(function(){return r})),n.d(e,"a",(function(){return c}));const o=document.querySelector(".comeBack .btn");function r(t){t?o.classList.remove("hidden"):o.classList.add("hidden")}function c(t){o.onclick=()=>{o.classList.remove("hidden"),t()}}},function(t,e,n){"use strict";const o={method:"GET",redirect:"follow"},r=new Promise(t=>{fetch("js/site-with-alt.json",o).then(t=>t.json()).then(e=>{t(e)})});e.a=r},function(t,e,n){"use strict";function o(t,e,n=null){const o=document.createElement("li");o.classList.add("tags__elt");const r=document.createElement(e);return"a"===e&&(r.href=n),r.classList.add("tags__btn","btn","btn--tags"),r.textContent="#"+t,o.append(r),o}function r(t){const e=document.createElement("article");e.classList.add("cardAuthor");const n=document.createElement("a");n.classList.add("cardAuthor__link"),n.href="./photographe.html?author="+t.id,e.append(n);const r=document.createElement("div");r.classList.add("cardAuthor__imgBox"),n.append(r);const c=document.createElement("img");c.classList.add("cardAuthor__img"),c.alt="Portrait du photographe "+t.name,c.src="./img/authors/"+t.portrait,r.append(c);const a=document.createElement("h2");a.classList.add("cardAuthor__name"),a.textContent=t.name,n.append(a);const s=document.createElement("div");s.classList.add("cardAuthor__content"),e.append(s);const d=document.createElement("p");d.classList.add("cardAuthor__localisation"),d.textContent=`${t.city}, ${t.country}`,s.append(d);const l=document.createElement("p");l.classList.add("cardAuthor__citation"),l.textContent=t.tagline,s.append(l);const u=document.createElement("p");u.classList.add("cardAuthor__tarif"),u.textContent=t.price+"/jour",s.append(u);const i=document.createElement("div");i.classList.add("cardAuthor__tags"),e.append(i);const h=document.createElement("ul");return h.classList.add("tags"),i.append(h),t.tags.forEach(t=>{const e=o(t,"button");h.append(e)}),e}function c(t){const e=document.querySelector("title"),n="header_author",r=document.querySelector(`#${n} .author__title`),c=document.querySelector(`#${n} .author__localisation`),a=document.querySelector(`#${n} .author__slogan`),s=document.querySelector(`#${n} .tags`),d=document.querySelector(`#${n} .author__img`),l=document.querySelector(".infoAuthor__price span");e.textContent=e.textContent+t.name,r.textContent=t.name,c.textContent=`${t.city}, ${t.country}`,a.textContent=t.tagline,d.src="./img/authors/"+t.portrait,d.alt="Portrait du photographe "+t.name,l.textContent=t.price,t.tags.forEach(t=>{const e=o(t,"a","./?filter="+t);s.append(e)})}n.d(e,"a",(function(){return s}));var a=n(0);function s(){this.CreateElement=function(t,e,n){const o=t;return"card"===e?o.cardPhotographer=new r(t):o.cardHeaderPhotographer=new c(t),o.showCard=function(){const t=document.getElementById("listPhotographers"),e=this.cardPhotographer.querySelectorAll(".tags__btn");Array.from(e).forEach(t=>{t.onclick=()=>{const e=t.textContent.replace(/#/,"").toLowerCase();Object(a.b)(!0),n(e)}}),t.append(this.cardPhotographer)},o}}},,function(t,e,n){"use strict";n.r(e);var o=n(1),r=n(2),c=n(0);const a=window.location.search;var s=new URLSearchParams(a).get("filter");const d=new r.a,l=[];function u(t){i(l.filter(e=>e.tags.includes(t)))}function i(t=l){document.getElementById("listPhotographers").innerHTML=null,t.forEach(t=>{t.showCard()})}o.a.then(t=>{t.photographers.forEach(t=>{const e=new d.CreateElement(t,"card",u);l.push(e),e.showCard()}),s&&u(s)});const h=document.getElementsByClassName("tags__btn");Array.from(h).forEach(t=>{t.onclick=()=>{const e=t.textContent.replace(/#/,"").toLowerCase();Object(c.b)(!0),u(e)}});const m=document.querySelector("header"),p=document.getElementsByClassName("cardAuthor");window.onscroll=function(){console.log(l.length===p.length),console.log(m.offsetHeight>window.scrollY),console.log(m.offsetHeight>window.scrollY&&l.length===p.length),m.offsetHeight>window.scrollY&&l.length===p.length?Object(c.b)(!1):Object(c.b)(!0)},Object(c.a)(i)}]);
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/index.js");
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ "./src/DomConstructor/PhotographerCard.js":
+/*!************************************************!*\
+  !*** ./src/DomConstructor/PhotographerCard.js ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return PhotographerCard; });\n/* harmony import */ var _Tag__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Tag */ \"./src/DomConstructor/Tag.js\");\n\n/**\n *\n * @param {object} data les données du photgraphe\n */\n\nfunction PhotographerCard(data) {\n  // creation de la carte\n  const card = document.createElement('article');\n  card.classList.add('cardAuthor'); // creation du lien\n\n  const link = document.createElement('a');\n  link.classList.add('cardAuthor__link');\n  link.href = `./photographe.html?author=${data.id}`;\n  card.append(link); // creation de la box d'image est titre\n\n  const imgBox = document.createElement('div');\n  imgBox.classList.add('cardAuthor__imgBox');\n  link.append(imgBox); // creation de l'image\n\n  const img = document.createElement('img');\n  img.classList.add('cardAuthor__img');\n  img.alt = `Portrait du photographe ${data.name}`;\n  img.src = `./img/authors/${data.portrait}`;\n  imgBox.append(img); // creation du nom de l'auteur\n\n  const title = document.createElement('h2');\n  title.classList.add('cardAuthor__name');\n  title.textContent = data.name;\n  link.append(title); // creation de la box d'information de l'auteur\n\n  const info = document.createElement('div');\n  info.classList.add('cardAuthor__content');\n  card.append(info); // Ajout de la localisation de l'auteur\n\n  const local = document.createElement('p');\n  local.classList.add('cardAuthor__localisation');\n  local.textContent = `${data.city}, ${data.country}`;\n  info.append(local); // ajout de la tagline\n\n  const tagline = document.createElement('p');\n  tagline.classList.add('cardAuthor__citation');\n  tagline.textContent = data.tagline;\n  info.append(tagline); // Ajout de la du tarif\n\n  const tarif = document.createElement('p');\n  tarif.classList.add('cardAuthor__tarif');\n  tarif.textContent = `${data.price}/jour`;\n  info.append(tarif); // creation de la box tags\n\n  const tagsBox = document.createElement('div');\n  tagsBox.classList.add('cardAuthor__tags');\n  card.append(tagsBox); // ouverture de la liste des tags\n\n  const tags = document.createElement('ul');\n  tags.classList.add('tags');\n  tagsBox.append(tags); // Creation des tags un par un\n\n  data.tags.forEach(tag => {\n    const tagElt = Object(_Tag__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(tag, 'button');\n    tags.append(tagElt);\n  });\n  return card;\n}\n\n//# sourceURL=webpack:///./src/DomConstructor/PhotographerCard.js?");
+
+/***/ }),
+
+/***/ "./src/DomConstructor/PhotographerHeaderCard.js":
+/*!******************************************************!*\
+  !*** ./src/DomConstructor/PhotographerHeaderCard.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return PhotographerHeaderCard; });\n/* harmony import */ var _Tag__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Tag */ \"./src/DomConstructor/Tag.js\");\n\n/**\n *\n * @param {object} data les données du photographe\n */\n\nfunction PhotographerHeaderCard(data) {\n  // récupération des l'emplacements\n  const siteTitle = document.querySelector('title');\n  const headerId = 'header_author';\n  const title = document.querySelector(`#${headerId} .author__title`);\n  const local = document.querySelector(`#${headerId} .author__localisation`);\n  const tagline = document.querySelector(`#${headerId} .author__slogan`);\n  const tags = document.querySelector(`#${headerId} .tags`);\n  const img = document.querySelector(`#${headerId} .author__img`);\n  const price = document.querySelector('.infoAuthor__price span'); // modifier le contenu\n\n  siteTitle.textContent = siteTitle.textContent + data.name;\n  title.textContent = data.name;\n  local.textContent = `${data.city}, ${data.country}`;\n  tagline.textContent = data.tagline;\n  img.src = `./img/authors/${data.portrait}`;\n  img.alt = `Portrait du photographe ${data.name}`;\n  price.textContent = data.price; // ajouter les tags\n\n  data.tags.forEach(tag => {\n    const tagElt = Object(_Tag__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(tag, 'a', `./?filter=${tag}`);\n    tags.append(tagElt);\n  });\n}\n\n//# sourceURL=webpack:///./src/DomConstructor/PhotographerHeaderCard.js?");
+
+/***/ }),
+
+/***/ "./src/DomConstructor/Tag.js":
+/*!***********************************!*\
+  !*** ./src/DomConstructor/Tag.js ***!
+  \***********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return Tag; });\n/**\n * Constructeur html d'un bouton Tag\n * @param {string} tag le nom du tag\n */\nfunction Tag(tag, type, href = null) {\n  const tagElt = document.createElement('li');\n  tagElt.classList.add('tags__elt');\n  const tagBtn = document.createElement(type);\n\n  if (type === 'a') {\n    tagBtn.href = href;\n  }\n\n  tagBtn.classList.add('tags__btn', 'btn', 'btn--tags');\n  tagBtn.textContent = `#${tag}`;\n  tagElt.append(tagBtn);\n  return tagElt;\n}\n\n//# sourceURL=webpack:///./src/DomConstructor/Tag.js?");
+
+/***/ }),
+
+/***/ "./src/Factory/FactoryPhotographe.js":
+/*!*******************************************!*\
+  !*** ./src/Factory/FactoryPhotographe.js ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return FactoryPhotographe; });\n/* harmony import */ var _DomConstructor_PhotographerCard__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../DomConstructor/PhotographerCard */ \"./src/DomConstructor/PhotographerCard.js\");\n/* harmony import */ var _DomConstructor_PhotographerHeaderCard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../DomConstructor/PhotographerHeaderCard */ \"./src/DomConstructor/PhotographerHeaderCard.js\");\n/* harmony import */ var _utils_btnComeBack__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/btnComeBack */ \"./src/utils/btnComeBack.js\");\n\n\n\n/**\n * Factory de creation des photographe\n */\n\nfunction FactoryPhotographe() {\n  /**\n   * Le constructeur prend en parametres :\n   * @param {object} data les données du photographe\n   * @param {string} type 'card' si c'est une carte de photographe\n   *                       ou 'header' si c'est un header de page de photographe\n   */\n  this.CreateElement = function (data, type, filterTag) {\n    const element = data;\n\n    if (type === 'card') {\n      element.cardPhotographer = new _DomConstructor_PhotographerCard__WEBPACK_IMPORTED_MODULE_0__[\"default\"](data);\n    } else {\n      element.cardHeaderPhotographer = new _DomConstructor_PhotographerHeaderCard__WEBPACK_IMPORTED_MODULE_1__[\"default\"](data);\n    }\n\n    element.showCard = function () {\n      const main = document.getElementById('listPhotographers');\n      const allFilter = this.cardPhotographer.querySelectorAll('.tags__btn');\n      Array.from(allFilter).forEach(filter => {\n        filter.onclick = () => {\n          const value = filter.textContent.replace(/#/, '').toLowerCase();\n          Object(_utils_btnComeBack__WEBPACK_IMPORTED_MODULE_2__[\"showBtnComeBack\"])(true);\n          filterTag(value);\n        };\n      });\n      main.append(this.cardPhotographer);\n    };\n\n    return element;\n  };\n}\n\n//# sourceURL=webpack:///./src/Factory/FactoryPhotographe.js?");
+
+/***/ }),
+
+/***/ "./src/getData.js":
+/*!************************!*\
+  !*** ./src/getData.js ***!
+  \************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/**\n * Récupère les données via l'api\n */\nconst routeAPI = 'js/site-with-alt.json';\nconst requestOptions = {\n  method: 'GET',\n  redirect: 'follow'\n};\nconst getData = new Promise(resolve => {\n  fetch(routeAPI, requestOptions).then(response => response.json()).then(result => {\n    resolve(result);\n  }).catch(error => console.error(error));\n});\n/* harmony default export */ __webpack_exports__[\"default\"] = (getData);\n\n//# sourceURL=webpack:///./src/getData.js?");
+
+/***/ }),
+
+/***/ "./src/index.js":
+/*!**********************!*\
+  !*** ./src/index.js ***!
+  \**********************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _getData__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./getData */ \"./src/getData.js\");\n/* harmony import */ var _Factory_FactoryPhotographe__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Factory/FactoryPhotographe */ \"./src/Factory/FactoryPhotographe.js\");\n/* harmony import */ var _utils_btnComeBack__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./utils/btnComeBack */ \"./src/utils/btnComeBack.js\");\n/* harmony import */ var _paramUrl_paramUrlFilter__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./paramUrl/paramUrlFilter */ \"./src/paramUrl/paramUrlFilter.js\");\n/**\n * Js de la page d'accueil\n */\n\n\n\n/**\n * récupère les données des photographes et affiche le rendu html de chaque carte\n */\n\n\nconst factPhotographe = new _Factory_FactoryPhotographe__WEBPACK_IMPORTED_MODULE_1__[\"default\"]();\nconst photographers = [];\n_getData__WEBPACK_IMPORTED_MODULE_0__[\"default\"].then(result => {\n  result.photographers.forEach(photographer => {\n    const newPhotographer = new factPhotographe.CreateElement(photographer, 'card', filterTag);\n    photographers.push(newPhotographer);\n    newPhotographer.showCard();\n  });\n\n  if (_paramUrl_paramUrlFilter__WEBPACK_IMPORTED_MODULE_3__[\"default\"]) {\n    filterTag(_paramUrl_paramUrlFilter__WEBPACK_IMPORTED_MODULE_3__[\"default\"]);\n  }\n});\n/**\n * Créé un nouvel array de photogrphes en fonction de la valeur d'un filtre\n * @param {string} value Du filtre sélectionné\n */\n\nfunction filterTag(value) {\n  const newArray = photographers.filter(x => x.tags.includes(value));\n  filterPhotographer(newArray);\n}\n/**\n * affiche les cartes de photographes filtrées\n * @param {array} arrayPhotographer un tableau d'objet des photographes à afficher\n */\n\n\nfunction filterPhotographer(arrayPhotographer = photographers) {\n  const main = document.getElementById('listPhotographers');\n  main.innerHTML = null;\n  arrayPhotographer.forEach(element => {\n    element.showCard();\n  });\n} // gestion du click sur les filtres du header\n\n\nconst allFilter = document.getElementsByClassName('tags__btn');\nArray.from(allFilter).forEach(filter => {\n  filter.onclick = () => {\n    const value = filter.textContent.replace(/#/, '').toLowerCase();\n    Object(_utils_btnComeBack__WEBPACK_IMPORTED_MODULE_2__[\"showBtnComeBack\"])(true);\n    filterTag(value);\n  };\n}); // gestion du boutton passer au contenu\n\nconst menu = document.querySelector('header');\nconst cardAuthor = document.getElementsByClassName('cardAuthor');\n\nwindow.onscroll = function () {\n  console.log(photographers.length === cardAuthor.length);\n  console.log(menu.offsetHeight > window.scrollY);\n  console.log(menu.offsetHeight > window.scrollY && photographers.length === cardAuthor.length);\n\n  if (menu.offsetHeight > window.scrollY && photographers.length === cardAuthor.length) {\n    Object(_utils_btnComeBack__WEBPACK_IMPORTED_MODULE_2__[\"showBtnComeBack\"])(false);\n  } else {\n    Object(_utils_btnComeBack__WEBPACK_IMPORTED_MODULE_2__[\"showBtnComeBack\"])(true);\n  }\n};\n\nObject(_utils_btnComeBack__WEBPACK_IMPORTED_MODULE_2__[\"resetData\"])(filterPhotographer);\n\n//# sourceURL=webpack:///./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/paramUrl/paramUrlFilter.js":
+/*!****************************************!*\
+  !*** ./src/paramUrl/paramUrlFilter.js ***!
+  \****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/**\n * récupère le fitre en parmetre d'url\n */\nconst queryString = window.location.search;\nconst urlParams = new URLSearchParams(queryString);\nconst filter = urlParams.get('filter');\n/* harmony default export */ __webpack_exports__[\"default\"] = (filter);\n\n//# sourceURL=webpack:///./src/paramUrl/paramUrlFilter.js?");
+
+/***/ }),
+
+/***/ "./src/utils/btnComeBack.js":
+/*!**********************************!*\
+  !*** ./src/utils/btnComeBack.js ***!
+  \**********************************/
+/*! exports provided: showBtnComeBack, resetData */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"showBtnComeBack\", function() { return showBtnComeBack; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"resetData\", function() { return resetData; });\nconst btnComeBack = document.querySelector('.comeBack .btn');\nfunction showBtnComeBack(show) {\n  if (show) {\n    btnComeBack.classList.remove('hidden');\n  } else {\n    btnComeBack.classList.add('hidden');\n  }\n}\nfunction resetData(resetFunction) {\n  btnComeBack.onclick = () => {\n    btnComeBack.classList.remove('hidden');\n    resetFunction();\n  };\n}\n\n//# sourceURL=webpack:///./src/utils/btnComeBack.js?");
+
+/***/ })
+
+/******/ });

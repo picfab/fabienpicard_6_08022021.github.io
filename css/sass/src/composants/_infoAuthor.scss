@@ -1,15 +1,20 @@
 .infoAuthor{
+    box-sizing: border-box;
     background: $second;
-    position: fixed;
-    bottom: 0;
-    right: 36px;
+    margin-bottom: 50px;
     display: flex;
     max-width: 376px;
     width: 100%;
     padding: 21px 34px 37px 31px;
     font-size: 24px;
-    line-height: 31,25px;
+    line-height: 31.25px;
     justify-content: space-around;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
+    @media (min-width:1024px) {
+        margin-bottom: 0;
+        position: fixed;
+        bottom: 0;
+        right: 36px;
+    }
 }

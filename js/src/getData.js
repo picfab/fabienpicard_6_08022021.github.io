@@ -12,5 +12,6 @@ const getData = new Promise((resolve) => {
         .then((result) => {
             resolve(result)
         })
+        .catch((error) => console.error(error))
 })
 export default getData

@@ -1,0 +1,83 @@
+.form{
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &__content{
+        box-sizing: border-box;
+        justify-content: space-between;
+        background: $second;
+        padding: 35px;
+        display: flex;
+        flex-wrap: wrap;
+        width: 100vw;
+        height: 100vh;
+        @media (min-width:1024px) {
+            border-radius: 5px;
+            width: 669px;
+            height: auto;
+        }
+    }
+
+    &__elt{
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    &__label{
+        width: 100%;
+    }
+    &__input{
+        width: 100%;
+        height: 52px;
+        border-radius: 5px;
+        border:none;
+        @media (min-width:1024px) {
+            height: 68px;
+        }
+    }
+    &__textarea{
+        height: 184px;
+        @media (min-width:1024px) {
+            height: 170px;
+        }
+    }
+    &__title{
+        font-size: 36px;
+        line-height: 47px;
+        text-align: left;
+        @media (min-width:1024px) {
+            font-size: 64px;
+            line-height: 83px;
+        }
+    }
+    &__close{
+        color:#fff;
+        font-size: 18.67px;
+        height: 18.67px;
+        @media (min-width:1024px) {
+            font-size: 42px;
+        }
+    }
+    &__label{
+        font-family: DM Sans;
+        font-size: 24px;
+        line-height: 31px;
+        margin-top: 10px;
+        @media (min-width:1024px) {
+            font-size: 36px;
+            line-height: 47px;
+        }
+    }
+    &__submit{
+        margin: 50px auto;
+        @media (min-width:1024px) {
+            margin:50px 0;
+        }
+    }
+}

@@ -1,5 +1,7 @@
 .tags{
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     &__elt{
         margin: 5px;
     }

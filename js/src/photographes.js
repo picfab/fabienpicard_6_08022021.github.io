@@ -6,20 +6,35 @@ import getData from './getData'
 import FactoryPhotographe from './Factory/FactoryPhotographe'
 import FactoryMedia from './Factory/FactoryMedia'
 import updateTotalLikes from './utils/updateTotalLikes'
+import Lightbox from './DomConstructor/Lightbox'
 import listBox from './utils/listBox'
 import { triPopularite, triDate, triTitre } from './utils/tri'
+import FactoryForm from './Factory/FactoryForm'
 
 const container = document.querySelector('.listPhoto')
 const medias = []
 const factPhotographe = new FactoryPhotographe()
 const factMedia = new FactoryMedia()
+const factForm = new FactoryForm()
+let form
+/**
+ * Afficher la lightbox au click sur les images
+ */
+function showMedia() {
+    medias.forEach((media, i) => {
+        media.showElement()
+        media.html.querySelector('img').onclick = () => {
+            Lightbox(medias, i)
+        }
+    })
+}
 
 /** On récupère les données et on les traites */
 getData.then((result) => {
     // on retrouve les données du photographe de la page
     const findPhotographe = result.photographers.find((x) => x.id === IdAuthor)
     // On créait l'objet photographe
-    factPhotographe.CreateElement(findPhotographe, 'header')
+    const photographe = factPhotographe.CreateElement(findPhotographe, 'header')
     // on récupère les médias du photographe
     const mediaFilter = result.media.filter(
         (x) => x.photographerId === IdAuthor
@@ -34,16 +49,19 @@ getData.then((result) => {
             medias.push(newElement)
         }
         triPopularite(medias)
-        medias.forEach((media) => {
-            media.showElement()
-        })
+        showMedia()
     })
+    // on créait l'objet du formulaire
+    form = factForm.CreateElement(photographe.name)
 
     // Une fois tous les objects média créé on affiche le total des likes
     updateTotalLikes(medias)
 })
 
-// Gestion de la listBox
+/**
+ * Gestion de la listBox
+ * @param {string} type nom du type de tri
+ */
 function updateAfterTri(type) {
     switch (type) {
         case 'popularité':
@@ -60,9 +78,15 @@ function updateAfterTri(type) {
             break
     }
     container.innerHTML = ''
-    medias.forEach((media) => {
-        media.showElement()
-    })
+    showMedia()
 }
 
 listBox(updateAfterTri)
+
+/**
+ * Afficher le formulaire de contact
+ */
+const btnForm = document.querySelector('.author__btn')
+btnForm.onclick = () => {
+    form.open()
+}

@@ -15,6 +15,8 @@ export default function FactoryMedia() {
         if (media.video) {
             element.html = new MediaCard(media, 'video')
         } else if (media.image) {
+            element.title = media.image.replace(/_/g, ' ').replace(/.jpg/g, '')
+            element.url = `img/${media.photographerId}/${media.image}`
             element.html = new MediaCard(media, 'image')
         }
 

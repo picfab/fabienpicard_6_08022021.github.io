@@ -1,15 +1,31 @@
-header{
+.header{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    &__list{
-        display:flex;
+    @media (max-width:1024px) {
         flex-wrap: wrap;
+    }
+
+    .branding{
+        &__img {
+            max-width: 200px;
+        }
+    }
+    @media (max-width:1024px) {
+        &__nav{
+            width: 100%;
+            order:3;
+        }
+        .branding{
+            order:1;
+            margin-left: -30px;
+        }
+        .pagename{
+            order:2;
+            font-size: 14px;
+        }
+
     }
 }
 
-.branding{
-    &__img {
-        max-width: 200px;
-    }
-}
+

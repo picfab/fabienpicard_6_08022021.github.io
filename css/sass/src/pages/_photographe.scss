@@ -5,94 +5,10 @@ body{
     }
 }
 
-.listPhoto{
-    display: flex;
-    flex-wrap: wrap;
-    @media (max-width:500px) {
-        justify-content: center;
-    }
-    // justify-content: space-between;
-    color: $first;
-    &__card{
-
-
-        display: flex;
-        margin-bottom: 30px;
+.photographe{
+    .tags{
         justify-content: flex-start;
-        box-sizing: border-box;
-
-        @media (max-width:500px) {
-            flex-basis:100%;
-            justify-content: center;
-        }
-        @media (min-width:501px) and (max-width:1023px) {
-            flex-basis:calc(100% / 2);
-            &:nth-of-type(2n){
-                justify-content: flex-end;
-            }
-        }
-        @media (min-width:1024px) {
-            flex-basis:calc(100% / 3);
-            &:nth-of-type(3n+2){
-                justify-content: center;
-            }
-            &:nth-of-type(3n+3){
-                justify-content: flex-end;
-            }
-        }
-
-    }
-
-    &__container{
-        display: flex;
-        flex-direction: column;
-
-    }
-    &__imgBox{
-        // width: 350px;
-        // height: 350px;
-        @media (max-width:500px) {
-            height: 190px;
-        }
-        @media (min-width:501px) {
-            width: calc((100vw - 20px * 3) / 2);
-            height: calc((100vw - 20px *3 ) / 2);
-        }
-
-        @media (min-width:768px)  {
-            width: calc((100vw - 100px  * 3 ) / 2);
-            height: calc((100vw - 100px * 3 ) / 2);
-        }
-
-        @media (min-width:1024px)  {
-            width: calc((100vw - 100px  * 4 ) / 3);
-            height: calc((100vw - 100px * 4 ) / 3);
-        }
-    }
-
-    &__img{
-        -o-object-fit: cover;
-           object-fit: cover;
-        width: 100%;
-        height: 100%;
-    }
-    &__content{
-        margin-top: 15px;
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-    }
-    &__title{
-        width: 50%;
-        text-overflow: ellipsis;
-        overflow: hidden;
-        white-space: nowrap;
-        font-size: 24px;
-        font-weight: 400;
-        line-height: 31px;
-
-    }
-    &__info{
-        display: flex;
     }
 }
+
+
