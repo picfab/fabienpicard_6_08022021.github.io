@@ -10,7 +10,7 @@ export function showBtnComeBack(show) {
 
 export function resetData(resetFunction) {
     btnComeBack.onclick = () => {
-        btnComeBack.classList.remove('hidden')
+        btnComeBack.classList.add('hidden')
         resetFunction()
     }
 }

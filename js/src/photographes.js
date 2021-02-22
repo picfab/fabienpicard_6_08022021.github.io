@@ -7,7 +7,7 @@ import FactoryPhotographe from './Factory/FactoryPhotographe'
 import FactoryMedia from './Factory/FactoryMedia'
 import updateTotalLikes from './utils/updateTotalLikes'
 import Lightbox from './DomConstructor/Lightbox'
-import listBox from './utils/listBox'
+import ListBox from './utils/ListBox'
 import { triPopularite, triDate, triTitre } from './utils/tri'
 import FactoryForm from './Factory/FactoryForm'
 
@@ -17,14 +17,21 @@ const factPhotographe = new FactoryPhotographe()
 const factMedia = new FactoryMedia()
 const factForm = new FactoryForm()
 let form
+
 /**
  * Afficher la lightbox au click sur les images
  */
 function showMedia() {
     medias.forEach((media, i) => {
         media.showElement()
-        media.html.querySelector('img').onclick = () => {
+        const img = media.html.querySelector('img')
+        img.onclick = () => {
             Lightbox(medias, i)
+        }
+        img.onkeydown = (e) => {
+            if (['Enter', 'Space'].includes(e.key)) {
+                Lightbox(medias, i)
+            }
         }
     })
 }
@@ -81,7 +88,12 @@ function updateAfterTri(type) {
     showMedia()
 }
 
-listBox(updateAfterTri)
+const lisboxPhotographe = new ListBox()
+
+lisboxPhotographe.CreateElement(
+    document.querySelector('.listbox'),
+    updateAfterTri
+)
 
 /**
  * Afficher le formulaire de contact

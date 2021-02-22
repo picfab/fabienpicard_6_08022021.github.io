@@ -1,134 +1,129 @@
 /**
  * fait fonctionner la listbox
  */
-/**
- * mets à jour les valeur et attributs de la listbox
- * @param {array} options un tabelau d'objet avec les valeurs de chaque option
- * @param {objet} listboxBtn élément du dom du bouton de la listbox
- * @param {int} newIndex nouvel index de la valeur sélectionné
- * @param {int} oldIndex index de l'ancienne valuer ssélectionné
- * @param {function} updateAfterTri function pour mettre à jour le composant parent
- */
-function updateValue(options, listboxBtn, newIndex, oldIndex, updateAfterTri) {
-    const id = options[newIndex].id
-    const textContent = options[newIndex].textContent
-    listboxBtn.querySelector('.listbox__btn__text').textContent = textContent
-    listboxBtn.setAttribute('aria-activedescendant', id)
-    options[oldIndex].classList.remove('selected')
-    options[newIndex].classList.add('selected')
-    options[oldIndex].removeAttribute('aria-selected')
-    options[newIndex].setAttribute('aria-selected', true)
-    console.log(textContent.toLowerCase().trim())
-    updateAfterTri(textContent.toLowerCase().trim())
-}
-/**
- * mets à jour aria-expended
- * @param {oject} elt element du dom où la valuer de aria-expended est à modifier
- * @param {boolean} value true si la listbox est déplié sinon false
- */
-function ariaExpanded(elt, value) {
-    elt.setAttribute('aria-expanded', value)
-}
 
-/**
- * initialise le fonctionnement de la listbox
- * @param {function} updateAfterTri function pour mettre à jour le composant parent
- */
-export default function listBox(updateAfterTri) {
-    const listboxes = document.getElementsByClassName('listbox')
-    Array.from(listboxes).forEach((listbox) => {
-        const listboxBtn = listbox.querySelector('.listbox__btn')
-        const listboxContent = listbox.querySelector('.listbox__content')
-        const listboxList = listbox.querySelector('.listbox__list')
-        const options = listbox.getElementsByClassName('listbox__elt')
+export default function ListBox() {
+    /**
+     * initialise le fonctionnement de la listbox
+     * @param {objcet} listbox L'élément du dom conmprenant la listbox
+     * @param {function} updateAfterTri function pour mettre à jour le composant parent
+     */
+    this.CreateElement = function (listbox, updateAfterTri) {
+        const element = {}
+        element.btn = listbox.querySelector('.listbox__btn')
+        element.boxContent = listbox.querySelector('.listbox__list')
+        element.options = listbox.getElementsByClassName('listbox__elt')
+
         /**
-         * action au survol du bouton
+         * mets à jour aria-expended
+         * @param {boolean} value true si la listbox est déplié sinon false
+         */
+        element.ariaExpanded = function (value) {
+            this.btn.setAttribute('aria-expanded', value)
+        }
+
+        /**
+         * action sur le bouton de la listbox
+         */
+        /**
+         * action sur les touches
          * @param {event} e evenement
          */
-        listboxBtn.onmouseover = function (e) {
-            ariaExpanded(listboxBtn, true)
-            listboxList.classList.remove('hidden')
-        }
-        /**
-         * action à la fin du survol
-         * @param {event} e évenement
-         */
-        listboxContent.onmouseout = function (e) {
-            if (!listboxContent.contains(e.relatedTarget)) {
-                // moused out of div
-                ariaExpanded(listboxBtn, false)
-                listboxList.classList.add('hidden')
-            }
-        }
-        /**
-         * action au focus du bouton
-         * @param {event} e évenement
-         */
-        listboxBtn.onfocus = (e) => {
-            ariaExpanded(listboxBtn, true)
-        }
-        /**
-         * action à la fin du focus
-         * @param {event} e evenement
-         */
-        listboxBtn.onfocusout = (e) => {
-            ariaExpanded(listboxBtn, false)
-        }
-        /**
-         * action lors de l'utilisation des bouton haut bas
-         * @param {event} e evenement
-         */
-        listbox.onkeydown = (e) => {
-            const index = Array.from(options).findIndex((x) =>
-                x.classList.contains('selected')
-            )
-            // const selected =  listbox.getElementsByClassName('selected')[0]
-            if ([32, 13].includes(e.keyCode)) {
-                if (listboxList.classList.contains('hidden')) {
-                    listboxList.classList.remove('hidden')
-                    listboxList.focus()
+        element.btn.onkeydown = (e) => {
+            if (['Enter', 'Space'].includes(e.key)) {
+                if (element.boxContent.classList.contains('hidden')) {
+                    element.open()
                 } else {
-                    listboxList.classList.add('hidden')
-                    listboxBtn.focus()
-                }
-
-                if (e.keyCode === 38) {
-                    // haut
-                    const prev = index === 0 ? options.length - 1 : index - 1
-                    updateValue(
-                        options,
-                        listboxBtn,
-                        prev,
-                        index,
-                        updateAfterTri
-                    )
-                }
-                if (e.keyCode === 40) {
-                    // bas
-                    const next = index === options.length - 1 ? 0 : index + 1
-                    updateValue(
-                        options,
-                        listboxBtn,
-                        next,
-                        index,
-                        updateAfterTri
-                    )
+                    element.boxContent.classList.add('hidden')
+                    element.btn.focus()
+                    element.close()
                 }
             }
         }
+        // action au click
+        element.btn.onclick = function () {
+            element.open()
+        }
+
         /**
-         * action lors de l'utilisation de la souris
-         * @param {event} e evenement
+         * Ouvrir la listbox et Ajoute les TabIndex aux options
          */
-        listbox.onclick = (e) => {
-            const index = Array.from(options).findIndex((x) =>
+        element.open = function () {
+            let i = 100
+            Array.from(this.options).forEach((elt) => {
+                elt.tabIndex = i
+                if (i === 100) {
+                    elt.focus()
+                }
+                i = i + 1
+            })
+            this.boxContent.classList.remove('hidden')
+            this.ariaExpanded(true)
+            this.boxContent.focus()
+        }
+
+        /**
+         * Ferme la listbox
+         */
+        element.close = function () {
+            Array.from(element.options).forEach((elt) => {
+                elt.removeAttribute('tabIndex')
+            })
+            element.ariaExpanded(false)
+            element.boxContent.classList.add('hidden')
+        }
+
+        /**
+         * mets à jour les valeur et attributs de la listbox
+         * @param {int} newIndex nouvel index de la valeur sélectionné
+         */
+        element.updateValue = function (newIndex) {
+            const id = this.options[newIndex].id
+            const textContent = this.options[newIndex].textContent
+            this.btn.querySelector(
+                '.listbox__btn__text'
+            ).textContent = textContent
+            this.btn.nextSibling.nextElementSibling.setAttribute(
+                'aria-activedescendant',
+                id
+            )
+            const old = Array.from(this.options).findIndex((x) =>
                 x.classList.contains('selected')
             )
-            const newValue = Array.from(options).findIndex(
-                (x) => x === e.target
-            )
-            updateValue(options, listboxBtn, newValue, index, updateAfterTri)
-            listboxList.classList.add('hidden')
+            this.options[old].classList.remove('selected')
+            this.options[old].removeAttribute('aria-selected')
+            this.options[newIndex].classList.add('selected')
+            this.options[newIndex].setAttribute('aria-selected', true)
+            updateAfterTri(textContent.toLowerCase().trim())
+            this.close()
         }
-    })
+
+        /**
+         * Ajoute les événnements aux options de la listbox
+         */
+        Array.from(element.options).forEach((option, i) => {
+            option.onkeydown = (e) => {
+                if (!e.shiftKey && e.key === 'Tab') {
+                    if (i === element.options.length - 1) {
+                        e.preventDefault()
+                        element.options[0].focus()
+                    }
+                }
+                if (e.shiftKey && e.key === 'Tab') {
+                    if (i === 0) {
+                        e.preventDefault()
+                        element.options[element.options.length - 1].focus()
+                    }
+                }
+                if (['Enter', 'Space'].includes(e.key)) {
+                    element.updateValue(i)
+                }
+            }
+            option.onclick = () => {
+                element.updateValue(i)
+            }
+        })
+
+        return element
+    }
 }

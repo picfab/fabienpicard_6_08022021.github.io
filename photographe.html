@@ -17,7 +17,7 @@
                     <h1 class="author__title"></h1>
                     <button class="author__btn btn select">Contactez-moi</button>
                     <div class="author__info">
-                        <h3 class="author__localisation"></h3>
+                        <h2 class="author__localisation"></h2>
                         <p class="author__slogan"></p>
                     </div>
                     <nav class="author__nav">
@@ -37,13 +37,13 @@
                     <button role="button"
                             aria-haspopup="listbox"
                             aria-labelledby="order_label order_filtre"
-                            aria-activedescendant="order-0"
                             aria-expanded="false"
                             id="order_filtre"
                             class="listbox__btn btn select">
                         <span class="listbox__btn__text">Popularité</span><i class="fas fa-chevron-up"></i>
                     </button>
                     <ul id="order_list"
+                        aria-activedescendant="order-0"
                         tabindex="-1"
                         role="listbox"
                         aria-labelledby="order_label"

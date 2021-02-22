@@ -23,12 +23,15 @@ export default function Lightbox(medias, index) {
 
     const left = document.createElement('span')
     left.classList.add('lightbox__left', 'fas', 'fa-chevron-left')
+    left.tabIndex = 2
 
     const right = document.createElement('span')
     right.classList.add('lightbox__right', 'fas', 'fa-chevron-right')
+    right.tabIndex = 3
 
-    const close = document.createElement('span')
-    close.classList.add('lightbox__close', 'fas', 'fa-times')
+    const closeBtn = document.createElement('span')
+    closeBtn.classList.add('lightbox__close', 'fas', 'fa-times')
+    closeBtn.tabIndex = 1
 
     const arrow = document.createElement('div')
     arrow.classList.add('lightbox__arrow')
@@ -63,29 +66,92 @@ export default function Lightbox(medias, index) {
     // creation de tout les éléments
     lightbox.append(container)
     navLeft.append(left)
-    navRight.append(close)
+    navRight.append(closeBtn)
     navRight.append(right)
     container.prepend(navLeft)
     container.append(navRight)
 
-    // ferme la lightbox
-    close.onclick = () => {
-        lightbox.remove()
+    /**
+     * Fonction de navigation
+     */
+    // Droite
+    const goRight = () => {
+        listSLide[index].classList.remove('show')
+        index = index + 1 === medias.length ? 0 : index + 1
+        listSLide[index].classList.add('show')
     }
-
-    // image precedante
-    left.onclick = () => {
+    // Gauche
+    const goLeft = () => {
         listSLide[index].classList.remove('show')
         index = index - 1 < 0 ? medias.length - 1 : index - 1
         listSLide[index].classList.add('show')
     }
 
+    const close = () => {
+        const imgInitial = medias[index].html.querySelector('img')
+        imgInitial.focus()
+        lightbox.remove()
+    }
+
+    /**
+     * Gestion des clicks
+     */
+
+    // ferme la lightbox
+    closeBtn.onclick = () => {
+        close()
+    }
+
+    // image precedante
+    left.onclick = () => {
+        goLeft()
+    }
+
     // image suivante
     right.onclick = () => {
-        listSLide[index].classList.remove('show')
-        index = index + 1 === medias.length ? 0 : index + 1
-        listSLide[index].classList.add('show')
+        goRight()
+    }
+
+    /**
+     * Gestion du clavier
+     */
+    right.onkeydown = (e) => {
+        if (!e.shiftKey && e.key === 'Tab') {
+            e.preventDefault()
+            closeBtn.focus()
+            console.log(left)
+        }
+        if (e.key === 'Enter') {
+            goRight()
+        }
+    }
+    closeBtn.onkeydown = (e) => {
+        if (e.shiftKey && e.key === 'Tab') {
+            e.preventDefault()
+            right.focus()
+        }
+        if (e.key === 'Enter') {
+            close()
+        }
+    }
+    left.onkeydown = (e) => {
+        if (e.key === 'Enter') {
+            goLeft()
+        }
+    }
+
+    lightbox.onkeydown = (e) => {
+        if (e.key === 'Escape') {
+            close()
+        }
+        if (e.key === 'ArrowLeft') {
+            goLeft()
+        }
+        if (e.key === 'ArrowRight') {
+            goRight()
+        }
     }
 
     body.append(lightbox)
+    closeBtn.focus()
 }

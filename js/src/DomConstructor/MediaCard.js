@@ -3,10 +3,9 @@
  * @param {object} data les données du média
  * @param {string} type le type de media 'image' ou 'video'
  */
-export default function MediaCard(data, type) {
+export default function MediaCard(data, type, index = 0) {
     const card = document.createElement('div')
     card.classList.add('listPhoto__card')
-    card.tabIndex = 0
 
     const container = document.createElement('div')
     container.classList.add('listPhoto__container')
@@ -18,6 +17,7 @@ export default function MediaCard(data, type) {
     img.classList.add('listPhoto__img')
     img.alt = data.alt
     img.src = data.url
+    img.tabIndex = index
 
     const content = document.createElement('div')
     content.classList.add('listPhoto__content')
@@ -34,7 +34,7 @@ export default function MediaCard(data, type) {
     price.textContent = `${data.price} € `
 
     const likes = document.createElement('div')
-    likes.tabIndex = 0
+    likes.tabIndex = index
     likes.roles = 'button'
     likes.ariaLabel = 'AJouter un like'
     likes.classList.add('listPhoto__like')

@@ -57,18 +57,14 @@ Array.from(allFilter).forEach((filter) => {
         filterTag(value)
     }
 })
+
 // gestion du boutton passer au contenu
-const menu = document.querySelector('header')
+// const menu = document.querySelector('header')
+const listPhotographers = document.getElementById('listPhotographers')
 const cardAuthor = document.getElementsByClassName('cardAuthor')
 window.onscroll = function () {
-    console.log(photographers.length === cardAuthor.length)
-    console.log(menu.offsetHeight > window.scrollY)
-    console.log(
-        menu.offsetHeight > window.scrollY &&
-            photographers.length === cardAuthor.length
-    )
     if (
-        menu.offsetHeight > window.scrollY &&
+        listPhotographers.offsetTop + 100 > window.scrollY &&
         photographers.length === cardAuthor.length
     ) {
         showBtnComeBack(false)
