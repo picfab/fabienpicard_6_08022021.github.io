@@ -41,7 +41,7 @@ export default function MediaCard(data, type, index = 0) {
     likes.classList.add('listPhoto__like')
     likes.innerHTML = `<span>${data.likes}</span>`
 
-    const likeBtn = document.createElement('i')
+    const likeBtn = document.createElement('span')
     likeBtn.classList.add('fas', 'fa-heart')
     likes.ariaLabel = 'Likes'
 
