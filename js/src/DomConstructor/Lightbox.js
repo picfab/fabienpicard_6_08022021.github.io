@@ -11,6 +11,7 @@ export default function Lightbox(medias, index) {
     const body = document.querySelector('body')
     const lightbox = document.createElement('div')
     lightbox.classList.add('lightbox')
+    lightbox.ariaLabel('image closeup view')
 
     const container = document.createElement('div')
     container.classList.add('lightbox__container')
@@ -24,14 +25,17 @@ export default function Lightbox(medias, index) {
     const left = document.createElement('span')
     left.classList.add('lightbox__left', 'fas', 'fa-chevron-left')
     left.tabIndex = 2
+    left.ariaLabel = 'Previous image'
 
     const right = document.createElement('span')
     right.classList.add('lightbox__right', 'fas', 'fa-chevron-right')
     right.tabIndex = 3
+    right.ariaLabel = 'Next image'
 
     const closeBtn = document.createElement('span')
     closeBtn.classList.add('lightbox__close', 'fas', 'fa-times')
     closeBtn.tabIndex = 1
+    closeBtn.ariaLabel = 'Close dialog'
 
     const arrow = document.createElement('div')
     arrow.classList.add('lightbox__arrow')
@@ -50,6 +54,7 @@ export default function Lightbox(medias, index) {
         const img = document.createElement('img')
         img.classList.add('lightbox__img')
         img.src = media.url
+        img.ariaLabel = media.title
         img.alt = media.alt
 
         const title = document.createElement('div')

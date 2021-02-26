@@ -11,6 +11,7 @@ export default function PhotographerCard(data) {
     const link = document.createElement('a')
     link.classList.add('cardAuthor__link')
     link.href = `./photographe.html?author=${data.id}`
+    link.ariaLabel = data.name
     card.append(link)
     // creation de la box d'image est titre
     const imgBox = document.createElement('div')

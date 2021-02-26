@@ -28,6 +28,7 @@ function createInput(params) {
     labelElt.classList.add('form__label')
     labelElt.textContent = params.label
     labelElt.for = params.name
+    labelElt.id = params.name
     let input
 
     if (params.type === 'textarea') {
@@ -38,6 +39,7 @@ function createInput(params) {
         input.type = params.type
     }
     input.name = params.name
+    input.ariaLabelledby = params.name
     input.classList.add('form__input')
 
     formElt.append(labelElt)
@@ -45,8 +47,12 @@ function createInput(params) {
 
     return formElt
 }
+
 export default function Form(name) {
     const form = document.createElement('div')
+    form.ariaLabel = `Contactez-moi ${name}`
+    form.ariaLabelledby = 'formTitle'
+
     form.classList.add('form')
     form.id = 'contact'
 
@@ -55,8 +61,10 @@ export default function Form(name) {
 
     const close = document.createElement('div')
     close.classList.add('form__close', 'fas', 'fa-times')
+    close.ariaLabel = 'Close Contact form'
 
-    const title = document.createElement('div')
+    const title = document.createElement('h1')
+    title.id = 'formTitle'
     title.classList.add('form__title')
     title.innerHTML = `Contactez-moi <br> ${name}`
 
@@ -71,6 +79,7 @@ export default function Form(name) {
     const btn = document.createElement('button')
     btn.type = 'submit'
     btn.textContent = 'Envoyer'
+    btn.ariaLabel = 'Envoyer'
     btn.classList.add('form__submit', 'btn')
     content.append(btn)
     form.append(content)

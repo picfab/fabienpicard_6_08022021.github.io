@@ -18,6 +18,7 @@ export default function MediaCard(data, type, index = 0) {
     img.alt = data.alt
     img.src = data.url
     img.tabIndex = index
+    img.ariaLabel = `${data.title}, closeup view`
 
     const content = document.createElement('div')
     content.classList.add('listPhoto__content')

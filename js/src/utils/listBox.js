@@ -71,6 +71,7 @@ export default function ListBox() {
             })
             element.ariaExpanded(false)
             element.boxContent.classList.add('hidden')
+            element.btn.focus()
         }
 
         /**
