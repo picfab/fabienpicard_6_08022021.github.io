@@ -118,7 +118,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return Tag; });\n/**\n * Constructeur html d'un bouton Tag\n * @param {string} tag le nom du tag\n */\nfunction Tag(tag, type, href = null) {\n  const tagElt = document.createElement('li');\n  tagElt.classList.add('tags__elt');\n  const tagBtn = document.createElement(type);\n\n  if (type === 'a') {\n    tagBtn.href = href;\n  }\n\n  tagBtn.classList.add('tags__btn', 'btn', 'btn--tags');\n  tagBtn.textContent = `#${tag}`;\n  tagBtn.ariaLabel = 'Tag';\n  tagElt.append(tagBtn);\n  return tagElt;\n}\n\n//# sourceURL=webpack:///./src/DomConstructor/Tag.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return Tag; });\n/**\n * Constructeur html d'un bouton Tag\n * @param {string} tag le nom du tag\n */\nfunction Tag(tag, type, href = null) {\n  const tagElt = document.createElement('li');\n  tagElt.classList.add('tags__elt');\n  const tagBtn = document.createElement(type);\n\n  if (type === 'a') {\n    tagBtn.href = href;\n  }\n\n  tagBtn.classList.add('tags__btn', 'btn', 'btn--tags');\n  tagBtn.textContent = `#${tag}`;\n  tagBtn.ariaLabel = `Tag ${tag}`;\n  tagElt.append(tagBtn);\n  return tagElt;\n}\n\n//# sourceURL=webpack:///./src/DomConstructor/Tag.js?");
 
 /***/ }),
 

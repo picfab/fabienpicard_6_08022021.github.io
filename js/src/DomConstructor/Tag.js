@@ -12,7 +12,7 @@ export default function Tag(tag, type, href = null) {
     }
     tagBtn.classList.add('tags__btn', 'btn', 'btn--tags')
     tagBtn.textContent = `#${tag}`
-    tagBtn.ariaLabel = 'Tag'
+    tagBtn.ariaLabel = `Tag ${tag}`
     tagElt.append(tagBtn)
     return tagElt
 }
