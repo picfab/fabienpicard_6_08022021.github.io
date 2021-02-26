@@ -61,12 +61,14 @@
         color:#fff;
         font-size: 18.67px;
         height: 18.67px;
+        cursor: pointer;
         @media (min-width:1024px) {
             font-size: 42px;
         }
     }
     &__label{
         font-family: DM Sans;
+        cursor: pointer;
         font-size: 24px;
         line-height: 31px;
         margin-top: 10px;
@@ -76,6 +78,7 @@
         }
     }
     &__submit{
+        cursor: pointer;
         margin: 50px auto;
         @media (min-width:1024px) {
             margin:50px 0;

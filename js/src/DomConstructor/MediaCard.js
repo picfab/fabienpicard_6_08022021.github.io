@@ -12,10 +12,15 @@ export default function MediaCard(data, type, index = 0) {
 
     const imgBox = document.createElement('div')
     imgBox.classList.add('listPhoto__imgBox')
-
-    const img = document.createElement('img')
+    let img
+    if (type === 'video') {
+        img = document.createElement('video')
+        img.textContent = data.alt
+    } else {
+        img = document.createElement('img')
+        img.alt = data.alt
+    }
     img.classList.add('listPhoto__img')
-    img.alt = data.alt
     img.src = data.url
     img.tabIndex = index
     img.ariaLabel = `${data.title}, closeup view`

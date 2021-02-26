@@ -78,6 +78,9 @@
             font-size: 42px;
         }
     }
+    &__left,&__right,&__close{
+        cursor: pointer;
+    }
     &__blockNav{
         color:$first;
         position: relative;

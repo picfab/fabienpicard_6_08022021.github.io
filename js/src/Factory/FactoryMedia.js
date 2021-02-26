@@ -13,8 +13,13 @@ export default function FactoryMedia() {
         const element = media
 
         if (media.video) {
+            element.type = 'video'
+            element.title = media.video.replace(/_/g, ' ').replace(/.mp4/g, '')
+            element.url = `img/${media.photographerId}/${media.video}`
             element.html = new MediaCard(media, 'video')
+            console.log(element.html)
         } else if (media.image) {
+            element.type = 'image'
             element.title = media.image.replace(/_/g, ' ').replace(/.jpg/g, '')
             element.url = `img/${media.photographerId}/${media.image}`
             element.html = new MediaCard(media, 'image')

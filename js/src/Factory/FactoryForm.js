@@ -20,6 +20,7 @@ export default function FactoryForm() {
             close.onclick = () => this.close()
             const body = document.querySelector('body')
             body.append(this.html)
+            this.html.querySelector('[name="prenom"]').focus()
         }
 
         /**
@@ -28,6 +29,22 @@ export default function FactoryForm() {
         element.close = function () {
             const form = document.getElementById('contact')
             form.remove()
+            document.querySelector('html').removeAttribute('style')
+            document.querySelector('.author__btn').focus()
+        }
+
+        // event
+        const btnClose = element.html.querySelector('.form__close')
+        const firstInput = element.html.querySelector('.form__input')
+        btnClose.onkeydown = (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault()
+                element.close()
+            }
+            if (!e.shiftKey && e.key === 'Tab') {
+                e.preventDefault()
+                firstInput.focus()
+            }
         }
 
         return element

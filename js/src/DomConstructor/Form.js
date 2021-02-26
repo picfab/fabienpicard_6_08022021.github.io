@@ -21,7 +21,7 @@ const eltsForm = [
     },
 ]
 
-function createInput(params) {
+function createInput(params, i) {
     const formElt = document.createElement('div')
     formElt.classList.add('form__elt')
     const labelElt = document.createElement('label')
@@ -41,6 +41,7 @@ function createInput(params) {
     input.name = params.name
     input.ariaLabelledby = params.name
     input.classList.add('form__input')
+    input.tabIndex = i
 
     formElt.append(labelElt)
     formElt.append(input)
@@ -48,7 +49,7 @@ function createInput(params) {
     return formElt
 }
 
-export default function Form(name) {
+export default function Form(namen, formObject) {
     const form = document.createElement('div')
     form.ariaLabel = `Contactez-moi ${name}`
     form.ariaLabelledby = 'formTitle'
@@ -71,13 +72,17 @@ export default function Form(name) {
     content.append(title)
     content.append(close)
 
+    let i = 50
     eltsForm.forEach((elt) => {
-        const eltDom = createInput(elt)
+        const eltDom = createInput(elt, i)
         content.append(eltDom)
+        i = i + 1
     })
 
     const btn = document.createElement('button')
     btn.type = 'submit'
+    btn.tabIndex = i
+    close.tabIndex = i + 1
     btn.textContent = 'Envoyer'
     btn.ariaLabel = 'Envoyer'
     btn.classList.add('form__submit', 'btn')

@@ -66,12 +66,12 @@ export default function ListBox() {
          * Ferme la listbox
          */
         element.close = function () {
+            element.boxContent.classList.add('hidden')
+            element.ariaExpanded(false)
+            element.btn.focus()
             Array.from(element.options).forEach((elt) => {
                 elt.removeAttribute('tabIndex')
             })
-            element.ariaExpanded(false)
-            element.boxContent.classList.add('hidden')
-            element.btn.focus()
         }
 
         /**
@@ -79,6 +79,7 @@ export default function ListBox() {
          * @param {int} newIndex nouvel index de la valeur sélectionné
          */
         element.updateValue = function (newIndex) {
+            this.close()
             const id = this.options[newIndex].id
             const textContent = this.options[newIndex].textContent
             this.btn.querySelector(
@@ -95,8 +96,8 @@ export default function ListBox() {
             this.options[old].removeAttribute('aria-selected')
             this.options[newIndex].classList.add('selected')
             this.options[newIndex].setAttribute('aria-selected', true)
+
             updateAfterTri(textContent.toLowerCase().trim())
-            this.close()
         }
 
         /**
@@ -117,6 +118,7 @@ export default function ListBox() {
                     }
                 }
                 if (['Enter', 'Space'].includes(e.key)) {
+                    e.preventDefault()
                     element.updateValue(i)
                 }
             }

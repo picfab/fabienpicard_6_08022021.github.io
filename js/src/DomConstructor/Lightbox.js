@@ -11,7 +11,7 @@ export default function Lightbox(medias, index) {
     const body = document.querySelector('body')
     const lightbox = document.createElement('div')
     lightbox.classList.add('lightbox')
-    lightbox.ariaLabel('image closeup view')
+    lightbox.ariaLabel = 'image closeup view'
 
     const container = document.createElement('div')
     container.classList.add('lightbox__container')
@@ -51,11 +51,19 @@ export default function Lightbox(medias, index) {
         const imgbox = document.createElement('div')
         imgbox.classList.add('lightbox__imgbox')
 
-        const img = document.createElement('img')
+        let img
+        if (media.type === 'video') {
+            img = document.createElement('video')
+            img.textContent = media.alt
+            img.autoplay = true
+            img.loop = true
+        } else {
+            img = document.createElement('img')
+            img.alt = media.alt
+        }
         img.classList.add('lightbox__img')
         img.src = media.url
         img.ariaLabel = media.title
-        img.alt = media.alt
 
         const title = document.createElement('div')
         title.classList.add('lightbox__title')
@@ -93,9 +101,10 @@ export default function Lightbox(medias, index) {
     }
 
     const close = () => {
-        const imgInitial = medias[index].html.querySelector('img')
+        const imgInitial = medias[index].html.querySelector('.listPhoto__img')
         imgInitial.focus()
         lightbox.remove()
+        document.querySelector('html').removeAttribute('style')
     }
 
     /**
@@ -124,7 +133,6 @@ export default function Lightbox(medias, index) {
         if (!e.shiftKey && e.key === 'Tab') {
             e.preventDefault()
             closeBtn.focus()
-            console.log(left)
         }
         if (e.key === 'Enter') {
             goRight()

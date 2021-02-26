@@ -24,13 +24,15 @@ let form
 function showMedia() {
     medias.forEach((media, i) => {
         media.showElement()
-        const img = media.html.querySelector('img')
+        const img = media.html.querySelector('.listPhoto__img')
         img.onclick = () => {
             Lightbox(medias, i)
+            document.querySelector('html').style.overflow = 'hidden'
         }
         img.onkeydown = (e) => {
             if (['Enter', 'Space'].includes(e.key)) {
                 Lightbox(medias, i)
+                document.querySelector('html').style.overflow = 'hidden'
             }
         }
     })
@@ -49,12 +51,11 @@ getData.then((result) => {
     // on créait chaque
     mediaFilter.forEach((elt) => {
         // condition temporaire, il faut traiter les vdo
-        if (elt.image) {
-            const newElement = factMedia.CreateElement(elt, () =>
-                updateTotalLikes(medias)
-            )
-            medias.push(newElement)
-        }
+        const newElement = factMedia.CreateElement(elt, () =>
+            updateTotalLikes(medias)
+        )
+        medias.push(newElement)
+
         triPopularite(medias)
         showMedia()
     })
@@ -101,4 +102,5 @@ lisboxPhotographe.CreateElement(
 const btnForm = document.querySelector('.author__btn')
 btnForm.onclick = () => {
     form.open()
+    document.querySelector('html').style.overflow = 'hidden'
 }

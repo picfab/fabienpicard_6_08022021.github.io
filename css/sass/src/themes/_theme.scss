@@ -52,6 +52,7 @@ main {
 }
 
 .btn{
+    cursor: pointer;
     @extend .prim;
     padding: 23px 28px;
     font-weight: 700;
