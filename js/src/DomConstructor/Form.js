@@ -53,6 +53,7 @@ export default function Form(name, formObject) {
     const form = document.createElement('div')
     form.ariaLabel = `Contactez-moi ${name}`
     form.ariaLabelledby = 'formTitle'
+    form.role = 'dialog'
 
     form.classList.add('form')
     form.id = 'contact'
