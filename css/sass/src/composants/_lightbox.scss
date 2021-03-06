@@ -9,12 +9,10 @@
     display: flex;
     align-items: center;
     &__container{
+        flex: 1;
         display: flex;
         flex-wrap: wrap;
         margin: 25px;
-        // margin:62px 101px 0;
-        // height: calc(100vh - 62px);
-        // height: calc(100vw / 4 * 3);
         @media (min-width:1024px) {
             margin:62px 101px 0;
         }
@@ -31,7 +29,6 @@
         }
     }
     &__imgbox{
-        // flex: 1;
         overflow: hidden;
         width: 100%;
         height: calc(100vw / 5 * 3);
