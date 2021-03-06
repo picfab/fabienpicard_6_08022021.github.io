@@ -1,8 +1,13 @@
 .comeBack{
     position: fixed;
-    top: 0;
+    top: 3px;
     left: 0;
     width: 100%;
     display: flex;
     justify-content: center;
+    .btn{
+        height: 19px;
+        padding: 3px 6px 8px;
+        font-size: 18px;
+    }
 }
