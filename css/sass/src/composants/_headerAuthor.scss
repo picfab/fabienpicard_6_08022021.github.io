@@ -20,6 +20,7 @@
         @media (min-width:1024px) {
             font-size: 64px;
             line-height: 83px;
+            margin-right: 50px;
         }
     }
     &__info{
@@ -28,11 +29,22 @@
     &__localisation,&__nav{
         width: 100%;
     }
-    &__ville{
+    &__localisation{
         color:$first;
+        font-size: 13px;
+        line-height: 31px;
+        @media (min-width:1024px) {
+            font-size: 24px;
+        }
     }
+
     &__slogan{
+        font-size: 13px;
         color:$third;
+        @media (min-width:1024px) {
+            margin-top: 18px;
+            font-size: 18px;
+        }
     }
     &__imgBox{
         display: flex;
@@ -66,9 +78,6 @@
             left:50%;
             margin-left: calc(-170px / 2);
             padding: 5px 19px;
-        }
-        @media (min-width:1024px) {
-            margin-left: 50px;
         }
     }
 }

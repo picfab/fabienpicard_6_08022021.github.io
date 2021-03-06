@@ -49,7 +49,7 @@ function createInput(params, i) {
     return formElt
 }
 
-export default function Form(namen, formObject) {
+export default function Form(name, formObject) {
     const form = document.createElement('div')
     form.ariaLabel = `Contactez-moi ${name}`
     form.ariaLabelledby = 'formTitle'
