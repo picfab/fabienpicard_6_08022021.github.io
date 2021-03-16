@@ -20,21 +20,23 @@ export default function FactoryPhotographe() {
             element.cardHeaderPhotographer = new PhotographerHeaderCard(data)
         }
 
-        element.showCard = function () {
-            const main = document.getElementById('listPhotographers')
-            const allFilter = this.cardPhotographer.querySelectorAll(
-                '.tags__btn'
-            )
-            Array.from(allFilter).forEach((filter) => {
-                filter.onclick = () => {
-                    const value = filter.textContent
-                        .replace(/#/, '')
-                        .toLowerCase()
-                    showBtnComeBack(true)
-                    filterTag(value)
-                }
-            })
-            main.append(this.cardPhotographer)
+        if (type === 'card') {
+            element.showCard = function () {
+                const main = document.getElementById('listPhotographers')
+                const allFilter = this.cardPhotographer.querySelectorAll(
+                    '.tags__btn'
+                )
+                Array.from(allFilter).forEach((filter) => {
+                    filter.onclick = () => {
+                        const value = filter.textContent
+                            .replace(/#/, '')
+                            .toLowerCase()
+                        showBtnComeBack(true)
+                        filterTag(value)
+                    }
+                })
+                main.append(this.cardPhotographer)
+            }
         }
         return element
     }

@@ -28,7 +28,7 @@ getData.then((result) => {
 })
 
 /**
- * Créé un nouvel array de photogrphes en fonction de la valeur d'un filtre
+ * Créé un nouvel array de photographes en fonction de la valeur d'un filtre
  * @param {string} value Du filtre sélectionné
  */
 function filterTag(value) {
@@ -59,7 +59,6 @@ Array.from(allFilter).forEach((filter) => {
 })
 
 // gestion du boutton passer au contenu
-// const menu = document.querySelector('header')
 const listPhotographers = document.getElementById('listPhotographers')
 const cardAuthor = document.getElementsByClassName('cardAuthor')
 window.onscroll = function () {
