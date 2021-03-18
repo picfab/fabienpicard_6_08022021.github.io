@@ -36,6 +36,14 @@ getData.then((result) => {
         tagsHtml += `<li class="tags__elt"><button class="tags__btn btn btn--tags" aria-label="Tag ${tag}">#${tag}</button></li>`
     })
     tagsList.innerHTML = tagsHtml
+    const allFilter = tagsList.getElementsByClassName('tags__btn')
+    Array.from(allFilter).forEach((filter) => {
+        filter.onclick = () => {
+            const value = filter.textContent.replace(/#/, '').toLowerCase()
+            showBtnComeBack(true)
+            filterTag(value)
+        }
+    })
 })
 
 /**
@@ -60,14 +68,14 @@ function filterPhotographer(arrayPhotographer = photographers) {
 }
 
 // gestion du click sur les filtres du header
-const allFilter = document.getElementsByClassName('tags__btn')
-Array.from(allFilter).forEach((filter) => {
-    filter.onclick = () => {
-        const value = filter.textContent.replace(/#/, '').toLowerCase()
-        showBtnComeBack(true)
-        filterTag(value)
-    }
-})
+// const allFilter = document.getElementsByClassName('tags__btn')
+// Array.from(allFilter).forEach((filter) => {
+//     filter.onclick = () => {
+//         const value = filter.textContent.replace(/#/, '').toLowerCase()
+//         showBtnComeBack(true)
+//         filterTag(value)
+//     }
+// })
 
 // gestion du boutton passer au contenu
 const listPhotographers = document.getElementById('listPhotographers')
