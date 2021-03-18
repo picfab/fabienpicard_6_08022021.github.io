@@ -90,5 +90,12 @@ export default function Form(name, formObject) {
     content.append(btn)
     form.append(content)
 
+    btn.onclick = () => {
+        const inputs = form.getElementsByClassName('form__input')
+        Array.from(inputs).forEach((input) => {
+            console.log(`${input.name} : ${input.value}`)
+        })
+    }
+
     return form
 }

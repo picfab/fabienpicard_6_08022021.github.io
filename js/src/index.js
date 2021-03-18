@@ -11,7 +11,8 @@ import { showBtnComeBack, resetData } from './utils/btnComeBack'
 import paramUrlFilter from './paramUrl/paramUrlFilter'
 const factPhotographe = new FactoryPhotographe()
 const photographers = []
-
+const tags = new Set()
+const tagsList = document.querySelector('.header .tags')
 getData.then((result) => {
     result.photographers.forEach((photographer) => {
         const newPhotographer = new factPhotographe.CreateElement(
@@ -19,12 +20,22 @@ getData.then((result) => {
             'card',
             filterTag
         )
+        photographer.tags.forEach((tag) => {
+            tags.add(tag)
+        })
+
         photographers.push(newPhotographer)
         newPhotographer.showCard()
     })
     if (paramUrlFilter) {
         filterTag(paramUrlFilter)
     }
+
+    let tagsHtml = ''
+    tags.forEach((tag) => {
+        tagsHtml += `<li class="tags__elt"><button class="tags__btn btn btn--tags" aria-label="Tag ${tag}">#${tag}</button></li>`
+    })
+    tagsList.innerHTML = tagsHtml
 })
 
 /**
