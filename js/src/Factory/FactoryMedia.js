@@ -39,7 +39,7 @@ export default function FactoryMedia() {
         element.showElement = function () {
             const container = document.querySelector('.listPhoto')
             if (this.html) {
-                const btn = this.html.querySelector('.listPhoto__like')
+                const btn = this.html.querySelector('.fa-heart')
                 btn.onclick = (e) => {
                     this.updateLikes()
                 }

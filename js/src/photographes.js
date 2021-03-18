@@ -7,7 +7,7 @@ import FactoryPhotographe from './Factory/FactoryPhotographe'
 import FactoryMedia from './Factory/FactoryMedia'
 import updateTotalLikes from './utils/updateTotalLikes'
 import Lightbox from './DomConstructor/Lightbox'
-import ListBox from './utils/ListBox'
+import ListBox from './Factory/ListBox'
 import { triPopularite, triDate, triTitre } from './utils/tri'
 import FactoryForm from './Factory/FactoryForm'
 

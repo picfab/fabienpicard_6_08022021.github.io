@@ -40,7 +40,6 @@ export default function MediaCard(data, type, index = 0) {
     price.textContent = `${data.price} € `
 
     const likes = document.createElement('div')
-    likes.tabIndex = index
     likes.roles = 'button'
     likes.ariaLabel = 'AJouter un like'
     likes.classList.add('listPhoto__like')
@@ -48,8 +47,9 @@ export default function MediaCard(data, type, index = 0) {
 
     const likeBtn = document.createElement('span')
     likeBtn.classList.add('fas', 'fa-heart')
-    likes.ariaLabel = 'Likes'
+    likeBtn.tabIndex = index
 
+    likes.ariaLabel = 'Likes'
     card.append(container)
 
     container.append(imgBox)

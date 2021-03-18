@@ -65,6 +65,9 @@ $marginBtn:10px;
             left: 10px;
             right: 10px;
         }
+        &:focus{
+            border: 2px solid blue;
+        }
     }
 }
 .hidden{
